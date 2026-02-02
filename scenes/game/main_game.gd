@@ -2,6 +2,8 @@ extends Node2D
 
 @export var borders : WorldBoundarys
 @export var paddle : PackedScene
+const BALL_BODY = preload("uid://bx7lmlxv60bk7")
+
 @export var brickmap : TileMapLayer
 @export var cam : Camera2D
 
@@ -13,6 +15,10 @@ func _ready() -> void:
 	borders.ResetWorldBorderPositions(get_viewport_rect().end)
 	cam.position = get_viewport_rect().get_center()
 	brickmap.position = get_viewport_rect().get_center()
+
+	var ball := BALL_BODY.instantiate()
+	ball.global_position = get_viewport_rect().get_center()
+	add_child(ball)
 
 	var pad := paddle.instantiate()
 	add_child(pad)
