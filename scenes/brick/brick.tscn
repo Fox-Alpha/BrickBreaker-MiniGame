@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://x3g24qa4himj" path="res://icon.svg" id="1_hspfx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k3dtg"]
-size = Vector2(38, 8)
+size = Vector2(40, 10)
 
 [node name="Brick" type="StaticBody2D" unique_id=1447131663]
 
@@ -13,3 +13,9 @@ texture = ExtResource("1_hspfx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1764176601]
 shape = SubResource("RectangleShape2D_k3dtg")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=752763394]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=219660066]
+shape = SubResource("RectangleShape2D_k3dtg")
+debug_color = Color(0.6069139, 0.53630733, 0.19852418, 0.41960785)

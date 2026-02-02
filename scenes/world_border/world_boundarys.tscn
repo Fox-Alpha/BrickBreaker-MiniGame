@@ -23,7 +23,6 @@ z_index = 25
 position = Vector2(-128, 0)
 rotation = 1.5708
 collision_layer = 128
-collision_mask = 0
 
 [node name="Collision" type="CollisionShape2D" parent="LeftBorder" unique_id=1155303382]
 shape = SubResource("WorldBoundaryShape2D_yp6xr")
@@ -32,7 +31,6 @@ shape = SubResource("WorldBoundaryShape2D_yp6xr")
 position = Vector2(0, -128)
 rotation = 3.14159
 collision_layer = 128
-collision_mask = 0
 
 [node name="Collision" type="CollisionShape2D" parent="TopBorder" unique_id=660514119]
 shape = SubResource("WorldBoundaryShape2D_dmdjc")
@@ -42,7 +40,6 @@ z_index = 25
 position = Vector2(128, 0)
 rotation = -1.5708
 collision_layer = 128
-collision_mask = 0
 
 [node name="Collision" type="CollisionShape2D" parent="RightBorder" unique_id=658043574]
 shape = SubResource("WorldBoundaryShape2D_8q5vf")
@@ -51,7 +48,6 @@ shape = SubResource("WorldBoundaryShape2D_8q5vf")
 z_index = 25
 position = Vector2(0, 128)
 collision_layer = 128
-collision_mask = 0
 
 [node name="Collision" type="CollisionShape2D" parent="BottomBorder" unique_id=1037694235]
 shape = SubResource("WorldBoundaryShape2D_d5ebf")

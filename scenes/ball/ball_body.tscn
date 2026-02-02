@@ -8,7 +8,7 @@ radius = 5.0
 
 [node name="BallBody" type="CharacterBody2D" unique_id=112156557]
 physics_interpolation_mode = 1
-motion_mode = 1
+collision_mask = 129
 script = ExtResource("1_7cdgs")
 
 [node name="Ball" type="Sprite2D" parent="." unique_id=163227387]
