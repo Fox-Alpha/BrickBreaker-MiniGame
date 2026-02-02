@@ -16,17 +16,17 @@ func _ready() -> void:
 	cam.position = get_viewport_rect().get_center()
 	brickmap.position = get_viewport_rect().get_center()
 
+	var pad := paddle.instantiate()
 	var ball := BALL_BODY.instantiate()
-	ball.global_position = get_viewport_rect().get_center()
+	ball.global_position = Vector2(vps.get_center().x, vps.end.y -64)
 	add_child(ball)
 
-	var pad := paddle.instantiate()
 	add_child(pad)
-	var p:= Vector2i(vps.get_center().x, vps.end.y -pad.getPaddleSize().y -8)
+	var p:= Vector2(vps.get_center().x, vps.end.y -pad.getPaddleSize().y -8)
 	pad.position = p
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
