@@ -8,8 +8,8 @@ var dbg : Control = null
 
 
 func _ready():
-	Game.connect("New_Game_Started", reset, CONNECT_DEFERRED)
-	Game.connect("Next_Round_Started", reset, CONNECT_DEFERRED)
+	#Game.connect("New_Game_Started", reset, CONNECT_DEFERRED)
+	#Game.connect("Next_Round_Started", reset, CONNECT_DEFERRED)
 
 	randomize()
 	velocity.x = [-1,1][randi() % 2]
@@ -25,8 +25,8 @@ func _physics_process(delta):
 	var collision = move_and_collide(ballspeed)
 	if collision:
 		velocity = velocity.bounce(collision.get_normal())
-	if Game.DebugControl:
-		Game.DebugControl.SetDebugText.emit(str(ballspeed))
+	#if Game.DebugControl:
+		#Game.DebugControl.SetDebugText.emit(str(ballspeed))
 
 
 func reset():
@@ -38,10 +38,11 @@ func reset():
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
-	if(!Game.hasGamestartet):
-		return
-	if(position.x < 0):
-		Game.emit_signal("Right_Player_Scored", 1)
-	else:
-		Game.emit_signal("Left_Player_Scored", 1)
+	#if(!Game.hasGamestartet):
+		#return
+	#if(position.x < 0):
+		#Game.emit_signal("Right_Player_Scored", 1)
+	#else:
+		#Game.emit_signal("Left_Player_Scored", 1)
 #	reset()
+	pass
