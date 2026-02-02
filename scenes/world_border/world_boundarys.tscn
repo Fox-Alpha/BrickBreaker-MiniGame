@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://nudge2df6xa1"]
+
+[ext_resource type="Script" uid="uid://wbtkimgbyan" path="res://scenes/world_border/world_boundarys.gd" id="1_dmdjc"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yp6xr"]
+distance = 5.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dmdjc"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8q5vf"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_d5ebf"]
+
+[node name="WorldBoundarys" type="Node2D" unique_id=1209013931 node_paths=PackedStringArray("LeftBorder", "TopBorder", "RightBorder", "BottomBorder")]
+script = ExtResource("1_dmdjc")
+LeftBorder = NodePath("LeftBorder")
+TopBorder = NodePath("TopBorder")
+RightBorder = NodePath("RightBorder")
+BottomBorder = NodePath("BottomBorder")
+
+[node name="LeftBorder" type="StaticBody2D" parent="." unique_id=1220772003]
+z_index = 25
+position = Vector2(-128, 0)
+rotation = 1.5708
+collision_layer = 128
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape2D" parent="LeftBorder" unique_id=1155303382]
+shape = SubResource("WorldBoundaryShape2D_yp6xr")
+
+[node name="TopBorder" type="StaticBody2D" parent="." unique_id=1462058170]
+position = Vector2(0, -128)
+rotation = 3.14159
+collision_layer = 128
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape2D" parent="TopBorder" unique_id=660514119]
+shape = SubResource("WorldBoundaryShape2D_dmdjc")
+
+[node name="RightBorder" type="StaticBody2D" parent="." unique_id=1333782071]
+z_index = 25
+position = Vector2(128, 0)
+rotation = -1.5708
+collision_layer = 128
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape2D" parent="RightBorder" unique_id=658043574]
+shape = SubResource("WorldBoundaryShape2D_8q5vf")
+
+[node name="BottomBorder" type="StaticBody2D" parent="." unique_id=1098101264]
+z_index = 25
+position = Vector2(0, 128)
+collision_layer = 128
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape2D" parent="BottomBorder" unique_id=1037694235]
+shape = SubResource("WorldBoundaryShape2D_d5ebf")
