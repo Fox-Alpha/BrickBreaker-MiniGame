@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-@export_range(100.0,1000.0,10.0) var SPEED = 500.0
+@export_range(100.0,1000.0,10.0) var SPEED = 650.0
 
 @export_enum("Player_1", "Player_2") var PlayerPaddle = 0
 
