@@ -28,7 +28,4 @@ scale = Vector2(0.99999976, 0.9999996)
 shape = SubResource("RectangleShape2D_k3dtg")
 debug_color = Color(0.6069139, 0.53630733, 0.19852418, 0.41960785)
 
-[connection signal="area_entered" from="BrickArea" to="." method="_on_brick_area_area_entered"]
-[connection signal="area_shape_entered" from="BrickArea" to="." method="_on_brick_area_area_shape_entered"]
-[connection signal="body_entered" from="BrickArea" to="." method="_on_brick_area_body_entered"]
 [connection signal="body_shape_entered" from="BrickArea" to="." method="_on_brick_area_body_shape_entered"]
