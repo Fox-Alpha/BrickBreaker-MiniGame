@@ -48,17 +48,8 @@ func _get_map_tilesize() -> Vector2i:
 
 
 func _set_mapposition_to_viewport() -> void:
-	## TileMap Size in Pixel
-	var mapcenterpixel := MapsizePxRect2i.get_center()
-
 	## Viewport Rectangle
 	var vprect := get_viewport_rect()
-
-	## ViewPort Center Point
-	var vpcenter := vprect.get_center()
-
-	## Viewport size: width and height
-	var vpsize := vprect.size
 
 	# Size - Margin: Top=X, Right=Y, Bottom=Z, Left= W
 	## Virtuelle(Nutzbare) Größe des ViewPort
@@ -73,8 +64,8 @@ func _set_mapposition_to_viewport() -> void:
 	## Neue Position der BrickMap
 	var vrtcp_cent := vrt_vwpt.get_center()
 	var msp := MapsizeInPixel
-	vrtcp_cent.x -= msp.x / 2
+	vrtcp_cent.x -= msp.x / 2.0
 	#vrtcp_cent.y = msp.y / 2 + UI_MARGIN.x
 
-	global_position = Vector2i(vrtcp_cent.x, msp.y / 2 + UI_MARGIN.x)
+	global_position = Vector2(vrtcp_cent.x, msp.y / 2.0 + UI_MARGIN.x)
 	pass
