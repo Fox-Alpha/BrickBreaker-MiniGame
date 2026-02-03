@@ -19,7 +19,7 @@ func _ready():
 
 
 func _physics_process(delta):
-	_speed = clampf(_speed * 1.1, SPEED, 400.0)
+	_speed = clampf(_speed * 1.1, SPEED, 500.0)
 	ballspeed =  velocity * delta * _speed
 	ballspeed = ballspeed.clamp(Vector2(-15, -15), Vector2(15, 15))
 	var collision = move_and_collide(ballspeed)
