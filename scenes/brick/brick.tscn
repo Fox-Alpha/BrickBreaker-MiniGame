@@ -7,7 +7,7 @@
 size = Vector2(126.66666, 116.66671)
 
 [node name="Brick" type="StaticBody2D" unique_id=1447131663]
-scale = Vector2(0.3, 0.12)
+scale = Vector2(1, 0.25)
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_k3dtg")
