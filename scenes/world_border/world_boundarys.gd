@@ -25,8 +25,12 @@ func _ready() -> void:
 func ResetWorldBorderPositions(maprect : Vector2i, _layer : int = 0) -> void:
 	print("ResetWorldBorderPositions: %s" % [maprect])
 
-	LeftBorder.position.x = 0 #-(maprect.x / 2.0)	#-2000		#Left	+2Tiles
-	TopBorder.position.y = 0 #(-maprect.y / 2.0)	#-4400		#Top
-	RightBorder.position.x = maprect.x #(maprect.x / 2.0) 	#2000		#Right
-	BottomBorder.position.y = maprect.y #(maprect.y / 2.0) 	#4400		#Bottom
+	LeftBorder.position.x = 0
+	TopBorder.position.y = 0
+
+	RightBorder.position.x = maprect.x
+	RightBorder.position.y = maprect.y
+
+	BottomBorder.position.x = maprect.x
+	BottomBorder.position.y = maprect.y
 	pass
