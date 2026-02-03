@@ -1,38 +1,22 @@
-[gd_scene format=4 uid="uid://d0eqprvkwlcl5"]
+[gd_scene format=3 uid="uid://d0eqprvkwlcl5"]
 
 [ext_resource type="Script" uid="uid://cmc17xq7khdna" path="res://scenes/game/main_game.gd" id="1_noi7s"]
-[ext_resource type="PackedScene" uid="uid://nudge2df6xa1" path="res://scenes/world_border/world_boundarys.tscn" id="1_p17hc"]
 [ext_resource type="PackedScene" uid="uid://xxrnnvqgevnr" path="res://scenes/paddle/paddle_controller.tscn" id="2_p2514"]
-[ext_resource type="Texture2D" uid="uid://x3g24qa4himj" path="res://icon.svg" id="2_qgbr3"]
-[ext_resource type="PackedScene" uid="uid://yd8n5nfsdnou" path="res://scenes/brick/brick.tscn" id="3_7qhhq"]
+[ext_resource type="PackedScene" uid="uid://d0vgsm8l8f5cv" path="res://scenes/brickmap/brick_map.tscn" id="3_7qhhq"]
+[ext_resource type="Texture2D" uid="uid://bh2tcy5tq4lj2" path="res://scenes/ball/ball.png" id="4_noi7s"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7qhhq"]
-texture = ExtResource("2_qgbr3")
-texture_region_size = Vector2i(40, 12)
-
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_noi7s"]
-scenes/1/scene = ExtResource("3_7qhhq")
-
-[sub_resource type="TileSet" id="TileSet_noi7s"]
-tile_size = Vector2i(128, 32)
-sources/0 = SubResource("TileSetAtlasSource_7qhhq")
-sources/1 = SubResource("TileSetScenesCollectionSource_noi7s")
-
-[node name="MainGame" type="Node2D" unique_id=2059236733 node_paths=PackedStringArray("borders", "brickmap", "cam")]
+[node name="MainGame" type="Node2D" unique_id=2059236733 node_paths=PackedStringArray("brickmap", "cam")]
 script = ExtResource("1_noi7s")
-borders = NodePath("WorldBoundarys")
 paddle = ExtResource("2_p2514")
-brickmap = NodePath("TileMapLayer")
+brickmap = NodePath("BrickMap")
 cam = NodePath("Camera2D")
-
-[node name="WorldBoundarys" parent="." unique_id=815879921 instance=ExtResource("1_p17hc")]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1199878627]
 
-[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1291412031]
-tile_map_data = PackedByteArray("AAD5////AQAAAAAAAQD5/wAAAQAAAAAAAQD5/wEAAQAAAAAAAQD5/wIAAQAAAAAAAQD6/wAAAQAAAAAAAQD6/wEAAQAAAAAAAQD8/wAAAQAAAAAAAQD8/wEAAQAAAAAAAQD9////AQAAAAAAAQD9/wAAAQAAAAAAAQD9/wEAAQAAAAAAAQD9/wIAAQAAAAAAAQD+//7/AQAAAAAAAQD+////AQAAAAAAAQD+/wAAAQAAAAAAAQD+/wEAAQAAAAAAAQD+/wIAAQAAAAAAAQD///7/AQAAAAAAAQD/////AQAAAAAAAQD//wAAAQAAAAAAAQD//wEAAQAAAAAAAQD//wIAAQAAAAAAAQAAAP7/AQAAAAAAAQAAAP//AQAAAAAAAQAAAAAAAQAAAAAAAQAAAAEAAQAAAAAAAQAAAAIAAQAAAAAAAQABAP7/AQAAAAAAAQABAP//AQAAAAAAAQABAAAAAQAAAAAAAQABAAEAAQAAAAAAAQABAAIAAQAAAAAAAQACAP//AQAAAAAAAQACAAAAAQAAAAAAAQACAAEAAQAAAAAAAQACAAIAAQAAAAAAAQADAAAAAQAAAAAAAQADAAEAAQAAAAAAAQAFAAAAAQAAAAAAAQAFAAEAAQAAAAAAAQAGAP//AQAAAAAAAQAGAAAAAQAAAAAAAQAGAAEAAQAAAAAAAQAGAAIAAQAAAAAAAQD5//7/AQAAAAAAAQD6////AQAAAAAAAQD7/wAAAQAAAAAAAQD8////AQAAAAAAAQD9//7/AQAAAAAAAQD+//3/AQAAAAAAAQD///3/AQAAAAAAAQAAAP3/AQAAAAAAAQABAP3/AQAAAAAAAQACAP7/AQAAAAAAAQADAP//AQAAAAAAAQAEAAAAAQAAAAAAAQAFAP//AQAAAAAAAQAGAP7/AQAAAAAAAQA=")
-tile_set = SubResource("TileSet_noi7s")
+[node name="BrickMap" parent="." unique_id=1299192858 instance=ExtResource("3_7qhhq")]
 
 [node name="CenterMarker" type="Marker2D" parent="." unique_id=1704977525]
-z_index = 11
-gizmo_extents = 15.0
+
+[node name="Sprite2D" type="Sprite2D" parent="CenterMarker" unique_id=936164110]
+self_modulate = Color(0.15686275, 0.22745098, 1, 1)
+texture = ExtResource("4_noi7s")

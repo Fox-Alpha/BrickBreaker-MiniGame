@@ -1,6 +1,5 @@
 extends Node2D
 
-@export var borders : WorldBoundarys
 @export var paddle : PackedScene
 const BALL_BODY = preload("uid://bx7lmlxv60bk7")
 
@@ -14,10 +13,8 @@ var worldsize : Vector2i = Vector2i(800,800)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	borders.ResetWorldBorderPositions(get_viewport_rect().end)
+
 	cam.position = get_viewport_rect().get_center()
-	brickmap.position = get_viewport_rect().get_center()
-	var brickmap_size : Rect2i = brickmap.get_used_rect()
 	center_marker.position = get_viewport_rect().get_center()
 
 	var pad := paddle.instantiate()
