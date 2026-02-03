@@ -1,6 +1,8 @@
 ## Sets the World Border Position with the Map Size
 class_name WorldBoundarys extends Node2D
 
+
+
 ## Border Nodes
 @export_group("Borders")
 ## Holds a [StaticBody2D] as the Left Border Node
@@ -20,17 +22,25 @@ func _ready() -> void:
 
 ## Sets the World Border Position with the Map Size [br]
 ##
-## [param maprect] : [Vector2i] Bottom right point from Mapsize[br]
+# [param maprect] : [Vector2i] Bottom right point from Mapsize[br]
 ## [param _layer] (unused): Map Layer Index [br]
-func ResetWorldBorderPositions(maprect : Vector2i, _layer : int = 0) -> void:
-	print("ResetWorldBorderPositions: %s" % [maprect])
+## [param maprect] [Recti2D] Used Tile Rect
+func ResetWorldBorderPositions(margin_to_vwpt : Vector4i = Vector4i.ZERO) -> void:
+	print("ResetWorldBorderPositions() with margin to ViewPort: %s" % [margin_to_vwpt])
+	var VpSz = get_viewport_rect()
+	VpSz.size.y -= margin_to_vwpt.x
+	VpSz.position.y += margin_to_vwpt.x
 
-	LeftBorder.position.x = 0
-	TopBorder.position.y = 0
+	TopBorder.global_position.x = VpSz.size.x / 2.0
+	TopBorder.global_position.y = VpSz.position.y
 
-	RightBorder.position.x = maprect.x
-	RightBorder.position.y = maprect.y
+	RightBorder.global_position.x = VpSz.size.x
+	RightBorder.global_position.y = VpSz.end.y / 2.0
 
-	BottomBorder.position.x = maprect.x
-	BottomBorder.position.y = maprect.y
+	BottomBorder.global_position.x = VpSz.size.x / 2.0
+	BottomBorder.global_position.y = VpSz.position.y +VpSz.size.y
+
+	LeftBorder.global_position.x = VpSz.position.x
+	LeftBorder.global_position.y = VpSz.end.y / 2.0
+
 	pass
