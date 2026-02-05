@@ -1,0 +1,121 @@
+[gd_scene format=3 uid="uid://cr3ea77qs82xt"]
+
+[ext_resource type="Texture2D" uid="uid://d4ilpxq124ic5" path="res://scenes/paddle/left_pallete_white_transp.png" id="1_cvu07"]
+[ext_resource type="Script" uid="uid://blt8mcqmriagp" path="res://scenes/game/ui/game_ui.gd" id="1_pb2t2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rpywg"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1070231264]
+follow_viewport_enabled = true
+script = ExtResource("1_pb2t2")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=816706709]
+custom_minimum_size = Vector2(0, 100)
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="Panel" type="Panel" parent="PanelContainer" unique_id=2097700314]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/Panel" unique_id=1352954226]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="VSeparator" type="VSeparator" parent="PanelContainer/Panel/HBoxContainer" unique_id=1518492618]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+theme_override_constants/separation = 4
+theme_override_styles/separator = SubResource("StyleBoxFlat_rpywg")
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/Panel/HBoxContainer" unique_id=206922429]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("1_cvu07")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="VSeparator2" type="VSeparator" parent="PanelContainer/Panel/HBoxContainer" unique_id=352388534]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+theme_override_constants/separation = 4
+theme_override_styles/separator = SubResource("StyleBoxFlat_rpywg")
+
+[node name="TextureRect2" type="TextureRect" parent="PanelContainer/Panel/HBoxContainer" unique_id=1222501985]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("1_cvu07")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="VSeparator3" type="VSeparator" parent="PanelContainer/Panel/HBoxContainer" unique_id=315328694]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+theme_override_constants/separation = 4
+theme_override_styles/separator = SubResource("StyleBoxFlat_rpywg")
+
+[node name="TextureRect3" type="TextureRect" parent="PanelContainer/Panel/HBoxContainer" unique_id=1407978080]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("1_cvu07")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="VSeparator4" type="VSeparator" parent="PanelContainer/Panel/HBoxContainer" unique_id=1348510208]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+theme_override_constants/separation = 4
+theme_override_styles/separator = SubResource("StyleBoxFlat_rpywg")
+
+[node name="Label" type="Label" parent="PanelContainer/Panel/HBoxContainer" unique_id=1165585580]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 41
+text = "1,000,000"
+
+[node name="VSeparator6" type="VSeparator" parent="PanelContainer/Panel/HBoxContainer" unique_id=74716835]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+theme_override_constants/separation = 4
+theme_override_styles/separator = SubResource("StyleBoxFlat_rpywg")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/Panel/HBoxContainer" unique_id=1374918816]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="PanelContainer/Panel/HBoxContainer/VBoxContainer" unique_id=891201854]
+layout_mode = 2
+theme_override_font_sizes/font_size = 19
+text = "Bounces"
+
+[node name="Label2" type="Label" parent="PanelContainer/Panel/HBoxContainer/VBoxContainer" unique_id=1148372011]
+layout_mode = 2
+theme_override_font_sizes/font_size = 19
+text = "P: 2"
+
+[node name="Label3" type="Label" parent="PanelContainer/Panel/HBoxContainer/VBoxContainer" unique_id=482765707]
+layout_mode = 2
+theme_override_font_sizes/font_size = 19
+text = "W: 3"
+
+[node name="Label2" type="Label" parent="PanelContainer/Panel/HBoxContainer" unique_id=976225500]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 41
+text = "Time: 00:00:000"
+
+[node name="VSeparator5" type="VSeparator" parent="PanelContainer/Panel/HBoxContainer" unique_id=1862032270]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+theme_override_constants/separation = 15
+theme_override_styles/separator = SubResource("StyleBoxFlat_rpywg")
+
+[node name="GameTimer" type="Timer" parent="." unique_id=1752769227]
