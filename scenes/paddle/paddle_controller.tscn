@@ -8,8 +8,11 @@ resource_name = "PaddleCollider"
 size = Vector2(8, 32)
 
 [node name="PaddleController" type="CharacterBody2D" unique_id=1863049164]
+texture_filter = 1
 scale = Vector2(4, 2)
+collision_mask = 0
 motion_mode = 1
+platform_on_leave = 2
 script = ExtResource("1_nhapd")
 
 [node name="Paddle" type="Sprite2D" parent="." unique_id=2122152647]

@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://wbtkimgbyan" path="res://scenes/world_border/world_boundarys.gd" id="1_dmdjc"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_w37og"]
+
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yp6xr"]
 distance = 5.0
 
@@ -23,6 +25,7 @@ z_index = 25
 position = Vector2(-128, 0)
 rotation = 1.5708
 collision_layer = 128
+physics_material_override = SubResource("PhysicsMaterial_w37og")
 
 [node name="Collision" type="CollisionShape2D" parent="LeftBorder" unique_id=1155303382]
 shape = SubResource("WorldBoundaryShape2D_yp6xr")
