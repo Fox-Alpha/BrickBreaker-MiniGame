@@ -46,7 +46,7 @@ func _ready() -> void:
 	add_child(ball)
 
 	add_child(pad)
-	var p:= Vector2(vps.get_center().x, vps.end.y -pad.getPaddleSize().y -8)
+	var p:= Vector2(vps.get_center().x, vps.end.y -pad.getPaddleSize().y /2)
 	pad.position = p
 	pass # Replace with function body.
 
