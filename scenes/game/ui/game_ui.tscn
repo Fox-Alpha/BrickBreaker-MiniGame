@@ -75,6 +75,12 @@ layout_mode = 2
 theme_override_constants/separation = 4
 theme_override_styles/separator = SubResource("StyleBoxFlat_rpywg")
 
+[node name="Button" type="Button" parent="PanelContainer/Panel/HBoxContainer" unique_id=1775304766]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_vertical = 4
+text = "RESET"
+
 [node name="Label" type="Label" parent="PanelContainer/Panel/HBoxContainer" unique_id=1165585580]
 layout_mode = 2
 size_flags_horizontal = 10
@@ -96,7 +102,8 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 19
 text = "Bounces"
 
-[node name="Label2" type="Label" parent="PanelContainer/Panel/HBoxContainer/VBoxContainer" unique_id=1148372011]
+[node name="LabelVelocity" type="Label" parent="PanelContainer/Panel/HBoxContainer/VBoxContainer" unique_id=1148372011]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 19
 text = "P: 2"
@@ -119,3 +126,5 @@ theme_override_constants/separation = 15
 theme_override_styles/separator = SubResource("StyleBoxFlat_rpywg")
 
 [node name="GameTimer" type="Timer" parent="." unique_id=1752769227]
+
+[connection signal="pressed" from="PanelContainer/Panel/HBoxContainer/Button" to="." method="_on_button_pressed"]
