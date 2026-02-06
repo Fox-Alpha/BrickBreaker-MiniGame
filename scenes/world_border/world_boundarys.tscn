@@ -1,8 +1,7 @@
 [gd_scene format=3 uid="uid://nudge2df6xa1"]
 
 [ext_resource type="Script" uid="uid://wbtkimgbyan" path="res://scenes/world_border/world_boundarys.gd" id="1_dmdjc"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_w37og"]
+[ext_resource type="PhysicsMaterial" uid="uid://byovn05evtvcd" path="res://scenes/world_border/boundry_physics_material.tres" id="2_p6qt1"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yp6xr"]
 distance = 5.0
@@ -25,7 +24,8 @@ z_index = 25
 position = Vector2(-128, 0)
 rotation = 1.5708
 collision_layer = 128
-physics_material_override = SubResource("PhysicsMaterial_w37og")
+collision_mask = 0
+physics_material_override = ExtResource("2_p6qt1")
 
 [node name="Collision" type="CollisionShape2D" parent="LeftBorder" unique_id=1155303382]
 shape = SubResource("WorldBoundaryShape2D_yp6xr")
@@ -34,6 +34,7 @@ shape = SubResource("WorldBoundaryShape2D_yp6xr")
 position = Vector2(0, -128)
 rotation = 3.14159
 collision_layer = 128
+physics_material_override = ExtResource("2_p6qt1")
 
 [node name="Collision" type="CollisionShape2D" parent="TopBorder" unique_id=660514119]
 shape = SubResource("WorldBoundaryShape2D_dmdjc")
@@ -43,6 +44,7 @@ z_index = 25
 position = Vector2(128, 0)
 rotation = -1.5708
 collision_layer = 128
+physics_material_override = ExtResource("2_p6qt1")
 
 [node name="Collision" type="CollisionShape2D" parent="RightBorder" unique_id=658043574]
 shape = SubResource("WorldBoundaryShape2D_8q5vf")
@@ -51,6 +53,7 @@ shape = SubResource("WorldBoundaryShape2D_8q5vf")
 z_index = 25
 position = Vector2(0, 128)
 collision_layer = 128
+physics_material_override = ExtResource("2_p6qt1")
 
 [node name="Collision" type="CollisionShape2D" parent="BottomBorder" unique_id=1037694235]
 shape = SubResource("WorldBoundaryShape2D_d5ebf")
