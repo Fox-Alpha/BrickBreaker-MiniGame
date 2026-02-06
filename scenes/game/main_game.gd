@@ -18,13 +18,18 @@ extends Node2D
 const BALL_BODY = preload("uid://bx7lmlxv60bk7")
 
 signal NoMoreBrickInMap
+signal Reset_Game
 
 @export var paddle : PackedScene
 @export var brickmap : TileMapLayer
 @export var cam : Camera2D
+@export var canvas_layer: CanvasLayer
 
 @onready var vps := get_viewport_rect()
 @onready var center_marker: Marker2D = $CenterMarker
+
+var ball : Node
+
 
 var worldsize : Vector2i = Vector2i(800,800)
 var _brickcount : int = 0 :
@@ -41,12 +46,12 @@ func _ready() -> void:
 	center_marker.position = get_viewport_rect().get_center()
 
 	var pad := paddle.instantiate()
-	var ball := BALL_BODY.instantiate()
-	ball.global_position = Vector2(vps.get_center().x, vps.end.y -64)
+	ball = BALL_BODY.instantiate()
+	ball.global_position = Vector2(vps.get_center().x, vps.end.y -164)
 	add_child(ball)
-
+	canvas_layer.ball = ball
 	add_child(pad)
-	var p:= Vector2(vps.get_center().x, vps.end.y -pad.getPaddleSize().y /2)
+	var p:= Vector2(vps.get_center().x, vps.end.y -pad.getPaddleSize().y *2)
 	pad.position = p
 	pass # Replace with function body.
 
@@ -60,6 +65,10 @@ func _on_brick_map_child_entered_tree(node: Node) -> void:
 	if node is Brick:
 		print("Brick entered MapTree -> %s" % [node.name])
 		_brickcount += 1
+		randomize()
+		node.hit_points = [1.0,2.0][randi() % 2]
+		#velocity.y = [-0.8, 0.8][randi() % 2]
+		node.points = [node.hit_points,50][randi() % 2]
 	pass # Replace with function body.
 
 
