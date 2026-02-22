@@ -18,3 +18,6 @@ tile_set = SubResource("TileSet_noi7s")
 script = ExtResource("3_076on")
 
 [node name="WorldBoundarys" parent="." unique_id=1209013931 instance=ExtResource("3_s0olb")]
+
+[connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
+[connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]

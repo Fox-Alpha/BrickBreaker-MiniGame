@@ -19,6 +19,7 @@ const BALL_BODY = preload("uid://bx7lmlxv60bk7")
 
 signal NoMoreBrickInMap
 signal Reset_Game
+signal Player_Score
 
 @export var paddle : PackedScene
 @export var brickmap : TileMapLayer
@@ -32,12 +33,12 @@ var ball : Node
 
 
 var worldsize : Vector2i = Vector2i(800,800)
-var _brickcount : int = 0 :
-	get(): return _brickcount
-	set(value):
-		_brickcount = value
-		if _brickcount == 0:
-			NoMoreBrickInMap.emit()
+#var _brickcount : int = 0 :
+	#get(): return _brickcount
+	#set(value):
+		#_brickcount = value
+		#if _brickcount == 0:
+			#NoMoreBrickInMap.emit()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -61,19 +62,11 @@ func _process(_delta: float) -> void:
 	pass
 
 
-func _on_brick_map_child_entered_tree(node: Node) -> void:
-	if node is Brick:
-		print("Brick entered MapTree -> %s" % [node.name])
-		_brickcount += 1
-		randomize()
-		node.hit_points = [1.0,2.0][randi() % 2]
-		#velocity.y = [-0.8, 0.8][randi() % 2]
-		node.points = [node.hit_points,50][randi() % 2]
+func _on_brick_map_child_entered_tree(_node: Node) -> void:
+
 	pass # Replace with function body.
 
 
-func _on_brick_map_child_exiting_tree(node: Node) -> void:
-	if node is Brick and _brickcount > 0:
-		print("Brick leave MapTree -> %s" % [node.name])
-		_brickcount -= 1
+func _on_brick_map_child_exiting_tree(_node: Node) -> void:
+
 	pass # Replace with function body.

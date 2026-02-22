@@ -10,6 +10,13 @@ const UI_MARGIN : Vector4i = Vector4i(100, 0, 0, 0)
 
 @onready var world_boundarys: WorldBoundarys = $WorldBoundarys
 
+var _brickcount : int = 0 :
+	get(): return _brickcount
+	set(value):
+		_brickcount = value
+		if _brickcount == 0:
+			get_tree().current_scene.NoMoreBrickInMap.emit()
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -69,3 +76,21 @@ func _set_mapposition_to_viewport() -> void:
 
 	global_position = Vector2(vrtcp_cent.x, msp.y / 2.0 + UI_MARGIN.x)
 	pass
+
+
+func _on_child_entered_tree(node: Node) -> void:
+	if node is Brick:
+		print("Brick entered MapTree -> %s" % [node.name])
+		_brickcount += 1
+		randomize()
+		node.hit_points = 1 # [1.0,2.0][randi() % 2]
+		#velocity.y = [-0.8, 0.8][randi() % 2]
+		node.points = 10 #[node.hit_points,50][randi() % 2]
+
+
+func _on_child_exiting_tree(node: Node) -> void:
+	if node is Brick and _brickcount > 0:
+		print("Brick leave MapTree -> %s" % [node.name])
+		_brickcount -= 1
+		get_tree().current_scene.Player_Score.emit( (node as Brick).hit_points)
+	pass # Replace with function body.
