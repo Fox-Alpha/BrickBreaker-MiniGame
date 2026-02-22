@@ -1,4 +1,4 @@
-class_name Brick extends StaticBody2D
+class_name oldBrick extends StaticBody2D
 
 signal HitByBall
 
