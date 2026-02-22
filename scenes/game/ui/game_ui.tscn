@@ -81,7 +81,7 @@ layout_mode = 2
 size_flags_vertical = 4
 text = "RESET"
 
-[node name="Label" type="Label" parent="PanelContainer/Panel/HBoxContainer" unique_id=1165585580]
+[node name="LabelScore" type="Label" parent="PanelContainer/Panel/HBoxContainer" unique_id=1165585580]
 layout_mode = 2
 size_flags_horizontal = 10
 theme_override_font_sizes/font_size = 41
