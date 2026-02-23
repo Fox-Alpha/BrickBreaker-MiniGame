@@ -3,6 +3,7 @@ extends CanvasLayer
 @export var ball : RigidBody2D
 
 @onready var label_score: Label = $PanelContainer/Panel/HBoxContainer/LabelScore
+@onready var reset_button: Button = $PanelContainer/Panel/HBoxContainer/ButtonResetGame
 
 var _gamescore : int = 0
 
@@ -10,14 +11,15 @@ var _gamescore : int = 0
 func _ready() -> void:
 	if get_tree().current_scene.has_signal("Player_Score"):
 		get_tree().current_scene.Player_Score.connect(_on_player_score)
+	if OS.has_feature("editor"):
+		reset_button.show()
+		reset_button.pressed.connect(func():
+			if(get_tree().current_scene.has_signal("Reset_Game")):
+				get_tree().current_scene.Reset_Game.emit()
+			)
+	else:
+		reset_button.hide()
 	label_score.text = "0.000.000"
-	pass # Replace with function body.
-
-
-func _on_button_pressed() -> void:
-	if(get_tree().current_scene.has_signal("Reset_Game")):
-		get_tree().current_scene.Reset_Game.emit()
-		pass
 	pass # Replace with function body.
 
 

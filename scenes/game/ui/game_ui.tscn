@@ -75,7 +75,7 @@ layout_mode = 2
 theme_override_constants/separation = 4
 theme_override_styles/separator = SubResource("StyleBoxFlat_rpywg")
 
-[node name="Button" type="Button" parent="PanelContainer/Panel/HBoxContainer" unique_id=1775304766]
+[node name="ButtonResetGame" type="Button" parent="PanelContainer/Panel/HBoxContainer" unique_id=1775304766]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_vertical = 4
@@ -126,5 +126,3 @@ theme_override_constants/separation = 15
 theme_override_styles/separator = SubResource("StyleBoxFlat_rpywg")
 
 [node name="GameTimer" type="Timer" parent="." unique_id=1752769227]
-
-[connection signal="pressed" from="PanelContainer/Panel/HBoxContainer/Button" to="." method="_on_button_pressed"]
