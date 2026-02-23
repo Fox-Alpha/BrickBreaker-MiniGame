@@ -35,6 +35,9 @@ func _ready():
 
 func _on_tree_entered() -> void:
 	name = "Brick_" +str(get_instance_id())
+	randomize()
+	hit_points = 1 # [1.0,2.0][randi() % 2]
+	points = 10 #[node.hit_points,50][randi() % 2]
 	add_to_group("Brick", true)
 	pass # Replace with function body.
 

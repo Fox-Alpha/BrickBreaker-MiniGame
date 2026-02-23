@@ -21,9 +21,8 @@ var _brickcount : int = 0 :
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_set_mapposition_to_viewport()
-	#global_position = get_viewport_rect().get_center()
-
 	world_boundarys.ResetWorldBorderPositions(UI_MARGIN)
+	print("Brick_Map::_ready() -> Brick Count: %s" % _brickcount)
 	pass # Replace with function body.
 
 
@@ -80,12 +79,7 @@ func _set_mapposition_to_viewport() -> void:
 
 func _on_child_entered_tree(node: Node) -> void:
 	if node is Brick:
-		print("Brick entered MapTree -> %s" % [node.name])
 		_brickcount += 1
-		randomize()
-		node.hit_points = 1 # [1.0,2.0][randi() % 2]
-		#velocity.y = [-0.8, 0.8][randi() % 2]
-		node.points = 10 #[node.hit_points,50][randi() % 2]
 
 
 func _on_child_exiting_tree(node: Node) -> void:
