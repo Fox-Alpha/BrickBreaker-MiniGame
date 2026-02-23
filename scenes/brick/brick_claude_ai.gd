@@ -28,6 +28,8 @@ func _ready():
 	physics_material.bounce = 1.0
 	physics_material.friction = 0.0
 	physics_material_override = physics_material
+	
+	brick_destroyed.connect(_destroy, ConnectFlags.CONNECT_DEFERRED)
 
 
 func _on_tree_entered() -> void:
@@ -45,14 +47,14 @@ func _take_damage():
 	current_hit_points -= 1
 
 	if current_hit_points <= 0:
-		_destroy()
+		brick_destroyed.emit(self, points)
+		#_destroy()
 	else:
 		#_update_visual()
 		await _play_hit_effect()
 
 
-func _destroy():
-	brick_destroyed.emit(self, points)
+func _destroy(_node : Node2D, _points : int):
 	print("Brick %s / points %s" % [name, points])
 	await _play_destroy_effect()
 	queue_free()
@@ -85,7 +87,8 @@ func _play_hit_effect():
 	tween.tween_property(self, "self_modulate", Color.WHITE, 0.6)
 	tween.tween_property(self, "self_modulate", Color(1, 1, 1, 1), 0.6)
 	await tween.finished
-	return true
+	pass
+	#return true
 
 
 func _play_destroy_effect():
@@ -95,8 +98,8 @@ func _play_destroy_effect():
 	tween.tween_property(self, "scale", Vector2.ZERO, 1.5).from_current()
 	tween.tween_property(self, "modulate:a", 0.0, 0.5)
 	await tween.finished
-
-	return true
+	pass
+	#return true
 
 
 func _on_tweening() -> void :
