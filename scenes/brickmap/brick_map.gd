@@ -84,9 +84,7 @@ func _on_child_entered_tree(node: Node) -> void:
 
 func _on_child_exiting_tree(node: Node) -> void:
 	if node is Brick:
-		print("Brick leave MapTree -> %s" % [node.name])
 		_brickcount -= 1
-		get_tree().current_scene.Player_Score.emit( (node as Brick).hit_points)
 	pass # Replace with function body.
 
 

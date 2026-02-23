@@ -59,6 +59,7 @@ func _take_damage():
 
 
 func _destroy(_node : Node2D, _points : int):
+	get_tree().current_scene.Player_Score.emit(points)
 	print("Brick %s / points %s" % [name, points])
 	await _play_destroy_effect()
 	queue_free()
