@@ -38,12 +38,7 @@ var ball : Node
 
 
 var worldsize : Vector2i = Vector2i(800,800)
-#var _brickcount : int = 0 :
-	#get(): return _brickcount
-	#set(value):
-		#_brickcount = value
-		#if _brickcount == 0:
-			#NoMoreBrickInMap.emit()
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
