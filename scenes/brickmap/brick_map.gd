@@ -94,3 +94,9 @@ func _on_child_exiting_tree(node: Node) -> void:
 		_brickcount -= 1
 		get_tree().current_scene.Player_Score.emit( (node as Brick).hit_points)
 	pass # Replace with function body.
+
+
+func _on_tree_entered() -> void:
+	child_entered_tree.connect(_on_child_entered_tree, ConnectFlags.CONNECT_ONE_SHOT)
+	child_exiting_tree.connect(_on_child_exiting_tree, ConnectFlags.CONNECT_ONE_SHOT)
+	pass # Replace with function body.

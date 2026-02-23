@@ -30,6 +30,7 @@ func _ready():
 	physics_material_override = physics_material
 	
 	brick_destroyed.connect(_destroy, ConnectFlags.CONNECT_DEFERRED)
+	tree_entered.connect(_on_tree_entered, ConnectFlags.CONNECT_ONE_SHOT)
 
 
 func _on_tree_entered() -> void:
