@@ -2,7 +2,7 @@ extends RigidBody2D
 
 @export var initial_speed: float = 500.0
 @export var max_speed: float = 850.0
-@export var speed_increase: float = 1.07  # 5% Geschwindigkeitserhöhung pro Treffer
+@export var speed_increase: float = 1.1  # 5% Geschwindigkeitserhöhung pro Treffer
 
 var min_angle: float = 0.2  # Verhindert zu flache Winkel
 
@@ -40,6 +40,6 @@ func _integrate_forces(state: PhysicsDirectBodyState2D):
 		normalized_vel = normalized_vel.normalized()
 		state.linear_velocity = normalized_vel * speed
 
-func _on_body_entered(body):
+func _on_body_entered(_body):
 	# Geschwindigkeit bei Kollision erhöhen
 	linear_velocity = linear_velocity.normalized() * (linear_velocity.length() * speed_increase)
