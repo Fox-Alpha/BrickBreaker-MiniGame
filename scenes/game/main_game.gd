@@ -18,8 +18,13 @@ extends Node2D
 const BALL_BODY = preload("uid://bx7lmlxv60bk7")
 
 signal NoMoreBrickInMap
+
+#region Global_Signals
+@warning_ignore_start("unused_signal")
 signal Reset_Game
 signal Player_Score
+@warning_ignore_restore("unused_signal")
+#endregion
 
 @export var paddle : PackedScene
 @export var brickmap : TileMapLayer
@@ -60,13 +65,3 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
-
-
-func _on_brick_map_child_entered_tree(_node: Node) -> void:
-
-	pass # Replace with function body.
-
-
-func _on_brick_map_child_exiting_tree(_node: Node) -> void:
-
-	pass # Replace with function body.
