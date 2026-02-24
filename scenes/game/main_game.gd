@@ -23,6 +23,8 @@ signal NoMoreBrickInMap
 @warning_ignore_start("unused_signal")
 signal Reset_Game
 signal Player_Score
+signal GS_GAME_PAUSED
+signal GS_GAME_UNPAUSED
 @warning_ignore_restore("unused_signal")
 #endregion
 
@@ -45,7 +47,16 @@ func _ready() -> void:
 	NoMoreBrickInMap.connect(func(): print("Keine Bricks mehr da"))
 	cam.position = get_viewport_rect().get_center()
 	center_marker.position = get_viewport_rect().get_center()
+	get_tree().paused = true
+	pass # Replace with function body.
 
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta: float) -> void:
+	pass
+
+
+func startgame() -> void:
 	var pad := paddle.instantiate()
 	ball = BALL_BODY.instantiate()
 	ball.global_position = Vector2(vps.get_center().x, vps.end.y -164)
@@ -54,9 +65,3 @@ func _ready() -> void:
 	add_child(pad)
 	var p:= Vector2(vps.get_center().x, vps.end.y -pad.getPaddleSize().y *2)
 	pad.position = p
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
