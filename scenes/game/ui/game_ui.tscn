@@ -160,5 +160,3 @@ theme_override_font_sizes/font_size = 50
 text = "Spiel Starten durch Tastendruck"
 
 [node name="GameTimer" type="Timer" parent="." unique_id=1752769227]
-
-[connection signal="gui_input" from="VBoxContainer/ColorRect/CenterContainer/VBoxContainer/LabelPause" to="." method="_on_label_pause_gui_input"]
