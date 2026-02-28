@@ -28,7 +28,7 @@ func _ready():
 	physics_material.bounce = 1.0
 	physics_material.friction = 0.0
 	physics_material_override = physics_material
-	
+
 	brick_destroyed.connect(_destroy, ConnectFlags.CONNECT_DEFERRED)
 	tree_entered.connect(_on_tree_entered, ConnectFlags.CONNECT_ONE_SHOT)
 

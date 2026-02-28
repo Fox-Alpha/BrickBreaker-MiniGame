@@ -27,7 +27,7 @@ func _ready() -> void:
 	if get_tree().current_scene.has_signal("GS_GAME_UNPAUSED"):
 		get_tree().current_scene.Player_Score.connect(_on_game_unpaused)
 		# RECT ausblenden
-		# 
+		#
 		pass
 	label_score.text = "0.000.000"
 	pass # Replace with function body.
