@@ -1,0 +1,25 @@
+{
+  "godot": {
+    "path": "/usr/local/bin/godot",
+    "version": "4.6"
+  },
+  "build": {
+    "project_name": "break-out-prototype",
+    "version_suffix": "dev",
+    "export_root": ".exports",
+    "output_filename": "{project}_{date}_{os}_{type}",
+    "use_separators": true
+  },
+  "profiles": [
+    {
+      "name": "Linux",
+      "type": "export-debug",
+      "platform": "x86_64"
+    },
+    {
+      "name": "Windows Desktop",
+      "type": "export-debug",
+      "platform": "x86_64"
+    }
+  ]
+}
