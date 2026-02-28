@@ -16,6 +16,10 @@ run/main_scene="uid://d0eqprvkwlcl5"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Game="*uid://btrgue0s87w66"
+
 [display]
 
 window/size/viewport_width=1920
@@ -23,6 +27,7 @@ window/size/viewport_height=1080
 window/size/mode=2
 window/size/initial_position_type=3
 window/size/initial_position=Vector2i(100, 100)
+window/size/initial_screen=1
 window/size/window_width_override=1920
 window/size/window_height_override=1080
 window/stretch/mode="canvas_items"
@@ -31,6 +36,10 @@ window/stretch/aspect="keep_width"
 [global_group]
 
 Wall=""
+
+[gui]
+
+theme/custom="uid://wvu4pacnfwqt"
 
 [input]
 

@@ -5,23 +5,34 @@
 [ext_resource type="PackedScene" uid="uid://d0vgsm8l8f5cv" path="res://scenes/brickmap/brick_map.tscn" id="3_7qhhq"]
 [ext_resource type="Texture2D" uid="uid://bh2tcy5tq4lj2" path="res://scenes/ball/ball.png" id="4_noi7s"]
 [ext_resource type="PackedScene" uid="uid://cr3ea77qs82xt" path="res://scenes/game/ui/game_ui.tscn" id="5_p2514"]
+[ext_resource type="PackedScene" uid="uid://cds6jx3u4sspi" path="res://scenes/main_menu/MainMenu.tscn" id="6_rpywg"]
 
 [node name="MainGame" type="Node2D" unique_id=2059236733 node_paths=PackedStringArray("brickmap", "cam", "canvas_layer")]
 script = ExtResource("1_noi7s")
 paddle = ExtResource("2_p2514")
-brickmap = NodePath("BrickMap")
+brickmap = NodePath("Level/BrickMap")
 cam = NodePath("Camera2D")
-canvas_layer = NodePath("CanvasLayer")
+canvas_layer = NodePath("GameUI/CanvasLayer")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1199878627]
 limit_enabled = false
 
-[node name="BrickMap" parent="." unique_id=1299192858 instance=ExtResource("3_7qhhq")]
-
 [node name="CenterMarker" type="Marker2D" parent="." unique_id=1704977525]
+visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="CenterMarker" unique_id=936164110]
 self_modulate = Color(0.15686275, 0.22745098, 1, 1)
 texture = ExtResource("4_noi7s")
 
-[node name="CanvasLayer" parent="." unique_id=1070231264 instance=ExtResource("5_p2514")]
+[node name="Level" type="Node" parent="." unique_id=1897711484]
+
+[node name="BrickMap" parent="Level" unique_id=1299192858 instance=ExtResource("3_7qhhq")]
+
+[node name="GameUI" type="Node" parent="." unique_id=1380177272]
+
+[node name="CanvasLayer" parent="GameUI" unique_id=1070231264 instance=ExtResource("5_p2514")]
+visible = false
+
+[node name="MenuUI" type="Node" parent="." unique_id=1979465861]
+
+[node name="MainMenu" parent="MenuUI" unique_id=69546658 instance=ExtResource("6_rpywg")]

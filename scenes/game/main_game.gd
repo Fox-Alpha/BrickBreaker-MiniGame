@@ -25,6 +25,7 @@ signal Reset_Game
 signal Player_Score
 signal GS_GAME_PAUSED
 signal GS_GAME_UNPAUSED
+#signal GL_GAMESTATE_CHANGE
 @warning_ignore_restore("unused_signal")
 #endregion
 
@@ -47,7 +48,8 @@ func _ready() -> void:
 	NoMoreBrickInMap.connect(func(): print("Keine Bricks mehr da"))
 	cam.position = get_viewport_rect().get_center()
 	center_marker.position = get_viewport_rect().get_center()
-	get_tree().paused = true
+	GS_GAME_UNPAUSED.connect(startgame)
+	#get_tree().paused = true
 	pass # Replace with function body.
 
 
