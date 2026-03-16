@@ -1,0 +1,19 @@
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["@modelcontextprotocol/server-filesystem", "/home/buckdi/Projekte/godot/projekte/break-out-prototype"],
+      "description": "Access to project files for reading and writing code changes"
+    },
+    "git": {
+      "command": "npx",
+      "args": ["@modelcontextprotocol/server-git", "/home/buckdi/Projekte/godot/projekte/break-out-prototype"],
+      "description": "Git integration for viewing diffs, commits, branches, and history"
+    },
+    "web-fetch": {
+      "command": "npx",
+      "args": ["@modelcontextprotocol/server-web"],
+      "description": "Web documentation lookup for Godot API docs and external references"
+    }
+  }
+}
