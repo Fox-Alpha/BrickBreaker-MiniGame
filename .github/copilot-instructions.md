@@ -8,7 +8,7 @@ Break-Out Prototype is a Godot 4.6 (2D) breakout/brick-breaker game built with G
 
 ### Running the Game
 - **Editor**: Open `project.godot` in Godot 4.6 and press F5 or click Play
-- **Main scene**: `res://scenes/game/main_game.tscn`
+- **Main scene**: `res://src/scenes/game/game.tscn`
 - **Export presets**: Located in `export_presets.cfg` (Linux and Windows Desktop profiles)
 
 ### Exporting
@@ -25,7 +25,7 @@ Break-Out Prototype is a Godot 4.6 (2D) breakout/brick-breaker game built with G
 
 ### Autoload (Singleton)
 
-**`Game` (scenes/game/globals/globals.gd)**
+**`Game` (src/scenes/core/game_manager.gd)**
 - Global singleton providing centralized game state management
 - Implements `GameStates` enum with 60+ state definitions covering initialization, gameplay, menus, pause, and UI states
 - Key signals: `GL_GAMESTATE_CHANGE` (emitted when state changes), `GL_CHANGE_GAMESTATE` (request state change)
@@ -33,21 +33,21 @@ Break-Out Prototype is a Godot 4.6 (2D) breakout/brick-breaker game built with G
 
 ### Scene Structure
 
-**Main Game Scene** (`res://scenes/game/main_game.tscn`)
+**Main Game Scene** (`res://src/scenes/game/game.tscn`)
 - Node2D container for active gameplay
 - Dynamically instantiates paddle and ball when game unpauses
 - Manages references to: paddle scene, brickmap (TileMapLayer), camera, and canvas layer
 - Key signals: `NoMoreBrickInMap`, `GS_GAME_PAUSED`, `GS_GAME_UNPAUSED`
 
 **Component Scenes**
-- **Paddle** (`scenes/paddle/paddle_controller.tscn`) – CharacterBody2D with mouse or keyboard control
-- **Ball** (`scenes/ball/ball_body.tscn`) – RigidBody2D with physics simulation
-- **Bricks** (`scenes/brick/brick.tscn`) – Static/TileMap-based destructible objects
-- **World Borders** (`scenes/world_border/world_boundarys.tscn`) – Collision boundary helpers
-- **Main Menu** (`scenes/main_menu/MainMenu.tscn`) – Menu scene with multiple views
+- **Paddle** (`src/scenes/paddle/paddle.tscn`) – CharacterBody2D with mouse or keyboard control
+- **Ball** (`src/scenes/ball/ball.tscn`) – RigidBody2D with physics simulation
+- **Bricks** (`src/scenes/brick/brick.tscn`) – Static/TileMap-based destructible objects
+- **World Borders** (`src/scenes/world_border/world_border.tscn`) – Collision boundary helpers
+- **Main Menu** (`src/scenes/main_menu/main_menu.tscn`) – Menu scene with multiple views
 
 **UI**
-- **Game UI** (`scenes/game/ui/game_ui.tscn`) – HUD for score, lives, and game status
+- **Game UI** (`src/scenes/ui/game_ui.tscn`) – HUD for score, lives, and game status
 
 ### Input Mapping
 
@@ -129,35 +129,53 @@ project.godot                       # Project configuration
 build_config.json                   # Export builder config
 export_presets.cfg                  # Godot export presets
 
-scenes/
-  game/
-    main_game.tscn / main_game.gd  # Main gameplay scene
-    globals/
-      globals.gd                    # Game singleton (autoload)
+src/                                # Game source code
+  scenes/
+    core/
+      game_manager.gd              # Game singleton (autoload)
+    paddle/
+      paddle.tscn
+      paddle_controller.gd
+    ball/
+      ball.tscn
+      ball_physics.gd
+    brick/
+      brick.tscn
+      brick.gd
+      brick_base.gd
+    brickmap/
+      brick_map.tscn
+      brick_map.gd
+    world_border/
+      world_border.tscn
+      world_border.gd
+    main_menu/
+      main_menu.tscn
+      main_view.tscn
+      main_view.gd
+    game/
+      game.tscn                    # Main game scene
+      game.gd                       # Main game controller
     ui/
-      game_ui.tscn / game_ui.gd    # HUD and score display
-  paddle/
-    paddle_controller.tscn / .gd   # Player-controlled paddle
-  ball/
-    ball_body.tscn / ball_body.gd  # Physics ball
-    ball_rigid.gd                   # (Possibly alternative implementation)
-  brick/
-    brick.tscn / brick.gd          # Brick prefab and logic
-    brick_base.gd                   # Base class
-    brick_claude_ai.gd             # Alternate brick implementation
-  brickmap/
-    brick_map.tscn / brick_map.gd  # TileMap manager for brick layout
-  world_border/
-    world_boundarys.tscn / .gd     # Collision boundaries
-  main_menu/
-    MainMenu.tscn / MainView.tscn  # Menu scenes
-    MainView.gd                     # Menu controller
+      game_ui.tscn
+      game_ui.gd
+  resources/
+    fonts/
+    themes/
 
-resources/
-  fonts/                            # Font resources
-  themes/                           # UI theme resources
+assets/                             # Non-code assets
+  images/
+  audio/
 
-assets/                             # Art, audio, and other assets
+docs/                               # Technical documentation
+  ARCHITECTURE.md
+  DEVELOPMENT.md
+  STYLE_GUIDE.md
+  GAME_DESIGN.md
+
+.github/
+  copilot-instructions.md
+  mcp-servers.json
 ```
 
 ## Debugging Tips
