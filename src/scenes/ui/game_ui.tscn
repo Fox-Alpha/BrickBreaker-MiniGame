@@ -1,0 +1,162 @@
+[gd_scene format=3 uid="uid://cr3ea77qs82xt"]
+
+[ext_resource type="Texture2D" uid="uid://d4ilpxq124ic5" path="res://scenes/paddle/left_pallete_white_transp.png" id="1_cvu07"]
+[ext_resource type="Script" uid="uid://blt8mcqmriagp" path="res://scenes/game/ui/game_ui.gd" id="1_pb2t2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rpywg"]
+
+[node name="GameUI" type="CanvasLayer" unique_id=1070231264]
+follow_viewport_enabled = true
+script = ExtResource("1_pb2t2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1083028349]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer" unique_id=816706709]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="VBoxContainer/PanelContainer" unique_id=2097700314]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PanelContainer/Panel" unique_id=1352954226]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/PanelContainer/Panel/HBoxContainer" unique_id=1518492618]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+theme_override_constants/separation = 4
+theme_override_styles/separator = SubResource("StyleBoxFlat_rpywg")
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/PanelContainer/Panel/HBoxContainer" unique_id=206922429]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("1_cvu07")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="VSeparator2" type="VSeparator" parent="VBoxContainer/PanelContainer/Panel/HBoxContainer" unique_id=352388534]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+theme_override_constants/separation = 4
+theme_override_styles/separator = SubResource("StyleBoxFlat_rpywg")
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/PanelContainer/Panel/HBoxContainer" unique_id=1222501985]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("1_cvu07")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="VSeparator3" type="VSeparator" parent="VBoxContainer/PanelContainer/Panel/HBoxContainer" unique_id=315328694]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+theme_override_constants/separation = 4
+theme_override_styles/separator = SubResource("StyleBoxFlat_rpywg")
+
+[node name="TextureRect3" type="TextureRect" parent="VBoxContainer/PanelContainer/Panel/HBoxContainer" unique_id=1407978080]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("1_cvu07")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="VSeparator4" type="VSeparator" parent="VBoxContainer/PanelContainer/Panel/HBoxContainer" unique_id=1348510208]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+theme_override_constants/separation = 4
+theme_override_styles/separator = SubResource("StyleBoxFlat_rpywg")
+
+[node name="ButtonResetGame" type="Button" parent="VBoxContainer/PanelContainer/Panel/HBoxContainer" unique_id=1775304766]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_vertical = 4
+text = "RESET"
+
+[node name="LabelScore" type="Label" parent="VBoxContainer/PanelContainer/Panel/HBoxContainer" unique_id=1165585580]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 41
+text = "1,000,000"
+
+[node name="VSeparator6" type="VSeparator" parent="VBoxContainer/PanelContainer/Panel/HBoxContainer" unique_id=74716835]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+theme_override_constants/separation = 4
+theme_override_styles/separator = SubResource("StyleBoxFlat_rpywg")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PanelContainer/Panel/HBoxContainer" unique_id=1374918816]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="VBoxContainer/PanelContainer/Panel/HBoxContainer/VBoxContainer" unique_id=891201854]
+layout_mode = 2
+theme_override_font_sizes/font_size = 19
+text = "Bounces"
+
+[node name="LabelVelocity" type="Label" parent="VBoxContainer/PanelContainer/Panel/HBoxContainer/VBoxContainer" unique_id=1148372011]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 19
+text = "P: 2"
+
+[node name="Label3" type="Label" parent="VBoxContainer/PanelContainer/Panel/HBoxContainer/VBoxContainer" unique_id=482765707]
+layout_mode = 2
+theme_override_font_sizes/font_size = 19
+text = "W: 3"
+
+[node name="Label2" type="Label" parent="VBoxContainer/PanelContainer/Panel/HBoxContainer" unique_id=976225500]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 41
+text = "Time: 00:00:000"
+
+[node name="VSeparator5" type="VSeparator" parent="VBoxContainer/PanelContainer/Panel/HBoxContainer" unique_id=1862032270]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+theme_override_constants/separation = 15
+theme_override_styles/separator = SubResource("StyleBoxFlat_rpywg")
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer" unique_id=713242519]
+process_mode = 2
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.14847952, 0.3958594, 0.41709244, 0.49019608)
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/ColorRect" unique_id=1233092804]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.48958334
+anchor_top = 0.4814815
+anchor_right = 0.5104167
+anchor_bottom = 0.5185185
+offset_left = -366.5
+offset_top = -14.5
+offset_right = 366.49994
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ColorRect/CenterContainer" unique_id=60452390]
+layout_mode = 2
+
+[node name="LabelPause" type="Label" parent="VBoxContainer/ColorRect/CenterContainer/VBoxContainer" unique_id=400513937]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Spiel Starten durch Tastendruck"
+
+[node name="GameTimer" type="Timer" parent="." unique_id=1752769227]
