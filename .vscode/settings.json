@@ -1,0 +1,9 @@
+{
+  "godot_tools.editor_path": "/usr/local/bin/godot",
+  "godot_tools.gdscript_lsp_server_port": 6005,
+  "editor.formatOnSave": false,
+  "[gdscript]": {
+    "editor.tabSize": 4,
+    "editor.insertSpaces": false
+  }
+}
