@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://nudge2df6xa1"]
 
-[ext_resource type="Script" uid="uid://wbtkimgbyan" path="res://scenes/world_border/world_boundarys.gd" id="1_dmdjc"]
-[ext_resource type="PhysicsMaterial" uid="uid://byovn05evtvcd" path="res://scenes/world_border/boundry_physics_material.tres" id="2_p6qt1"]
+[ext_resource type="Script" path="res://scenes/world_border/world_boundarys.gd" id="1_dmdjc"]
+[ext_resource type="PhysicsMaterial" uid="uid://bnrtvhvrgs1ne" path="res://resources/materials/boundry_physics_material.tres" id="2_p6qt1"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yp6xr"]
 distance = 5.0
