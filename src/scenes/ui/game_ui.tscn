@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cr3ea77qs82xt"]
 
 [ext_resource type="Texture2D" uid="uid://d4ilpxq124ic5" path="res://scenes/paddle/left_pallete_white_transp.png" id="1_cvu07"]
-[ext_resource type="Script" uid="uid://blt8mcqmriagp" path="res://scenes/game/ui/game_ui.gd" id="1_pb2t2"]
+[ext_resource type="Script" uid="uid://dq3385wx4miy3" path="res://scenes/ui/game_ui.gd" id="1_pb2t2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rpywg"]
 

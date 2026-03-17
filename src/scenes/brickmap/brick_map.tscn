@@ -1,8 +1,8 @@
 [gd_scene format=4 uid="uid://d0vgsm8l8f5cv"]
 
 [ext_resource type="PackedScene" uid="uid://yd8n5nfsdnou" path="res://scenes/brick/brick.tscn" id="2_076on"]
-[ext_resource type="Script" uid="uid://66e4u561iatx" path="res://scenes/brickmap/brick_map.gd" id="3_076on"]
-[ext_resource type="PackedScene" uid="uid://nudge2df6xa1" path="res://scenes/world_border/world_boundarys.tscn" id="3_s0olb"]
+[ext_resource type="Script" uid="uid://xo2e1vcpibji" path="res://scenes/brickmap/brick_map.gd" id="3_076on"]
+[ext_resource type="PackedScene" uid="uid://nudge2df6xa1" path="res://scenes/world_border/world_border.tscn" id="3_s0olb"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_noi7s"]
 scenes/1/scene = ExtResource("2_076on")

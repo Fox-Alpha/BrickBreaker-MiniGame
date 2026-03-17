@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cds6jx3u4sspi"]
 
 [ext_resource type="Texture2D" uid="uid://dssdoid3hbi0d" path="res://assets/images/bg.jpg" id="1_sbje1"]
-[ext_resource type="PackedScene" uid="uid://d2eurus3brfdy" path="res://scenes/main_menu/MainView.tscn" id="3_r15pg"]
+[ext_resource type="PackedScene" uid="uid://d2eurus3brfdy" path="res://scenes/main_menu/main_view.tscn" id="3_r15pg"]
 
 [node name="MainMenu" type="CanvasLayer" unique_id=980407213]
 

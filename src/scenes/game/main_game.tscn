@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://5puj5p7ctytr"]
 
 [ext_resource type="Script" uid="uid://cmc17xq7khdna" path="res://scenes/game/main_game.gd" id="1_noi7s"]
-[ext_resource type="PackedScene" uid="uid://xxrnnvqgevnr" path="res://scenes/paddle/paddle_controller.tscn" id="2_p2514"]
+[ext_resource type="PackedScene" uid="uid://xxrnnvqgevnr" path="res://scenes/paddle/paddle.tscn" id="2_p2514"]
 [ext_resource type="PackedScene" uid="uid://d0vgsm8l8f5cv" path="res://scenes/brickmap/brick_map.tscn" id="3_7qhhq"]
 [ext_resource type="Texture2D" uid="uid://bh2tcy5tq4lj2" path="res://scenes/ball/ball.png" id="4_noi7s"]
-[ext_resource type="PackedScene" uid="uid://cr3ea77qs82xt" path="res://scenes/game/ui/game_ui.tscn" id="5_p2514"]
-[ext_resource type="PackedScene" uid="uid://cds6jx3u4sspi" path="res://scenes/main_menu/MainMenu.tscn" id="6_rpywg"]
+[ext_resource type="PackedScene" uid="uid://cr3ea77qs82xt" path="res://scenes/ui/game_ui.tscn" id="5_p2514"]
+[ext_resource type="PackedScene" uid="uid://cds6jx3u4sspi" path="res://scenes/main_menu/main_menu.tscn" id="6_rpywg"]
 
 [node name="MainGame" type="Node2D" unique_id=2059236733 node_paths=PackedStringArray("brickmap", "cam", "canvas_layer")]
 script = ExtResource("1_noi7s")

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d2eurus3brfdy"]
 
-[ext_resource type="Script" uid="uid://clachh7ienx6f" path="res://scenes/main_menu/MainView.gd" id="1_bobse"]
+[ext_resource type="Script" uid="uid://do7ggn3nxi1iv" path="res://scenes/main_menu/main_view.gd" id="1_bobse"]
 
 [node name="MainView" type="HBoxContainer" unique_id=236602568]
 custom_minimum_size = Vector2(520, 520)
