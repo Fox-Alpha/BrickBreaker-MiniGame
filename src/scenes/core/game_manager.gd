@@ -89,6 +89,18 @@ var GameState : GameStates = GameStates.NOTDEFINED :
 		GL_GAMESTATE_CHANGE.emit(GameState)
 	get():
 		return GameState
+
+## Player lives (3 by default, can be configured)
+@export_range(1, 10, 1) var max_lives: int = 3
+var lives: int = max_lives :
+	set(value):
+		lives = clampi(value, 0, max_lives)
+		GL_LIVES_CHANGED.emit(lives)
+		if lives <= 0:
+			_on_game_over()
+	get():
+		return lives
+
 #endregion
 
 @onready var rng : RandomNumberGenerator = RandomNumberGenerator.new()
@@ -141,6 +153,7 @@ func _ready() -> void:
 	#Register_Game_Logic.connect(_Register_Game_Logic, CONNECT_ONE_SHOT)
 
 	rng.seed = 19771202
+	GL_BALL_LOST.connect(_on_ball_lost, CONNECT_DEFERRED)
 
 
 func _exit_tree() -> void:
@@ -228,6 +241,30 @@ func _Game_Max_Score_Reached() -> void:
 func _Game_Max_Round_Reached() -> void:
 	#GL_GAMESTATE_CHANGE.emit(GameStates.GAMEMAXROUND)
 	pass
+
+
+## Initialize game session - reset lives to max
+func init_game() -> void:
+	lives = max_lives
+	print("Game: Lives initialized to %d" % lives)
+
+
+## Lose one life - called when ball is lost
+func lose_life() -> void:
+	lives -= 1
+	print("Game: Life lost. Remaining lives: %d" % lives)
+
+
+## Handle ball loss event
+func _on_ball_lost() -> void:
+	print("Game: Ball lost detected")
+	lose_life()
+
+
+## Handle game over condition
+func _on_game_over() -> void:
+	print("Game: Game Over - No lives remaining")
+	GameState = GameStates.GAMEOVER
 
 
 ########
