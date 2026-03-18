@@ -1,5 +1,7 @@
 # Break-Out Prototype - Game Design Dokument
 
+> 📘 **English version**: [GAME_DESIGN_en.md](./GAME_DESIGN_en.md)
+
 ## Kernkonzept
 
 **Break-Out Prototype** ist ein klassisches Arcade-Spiel im Brick-Breaker-Stil. Der Spieler steuert ein Paddle, um einen Ball nach oben zu schlagen und dabei Steine zu zerstören, die in einem Raster angeordnet sind. Das Ziel ist es, alle Steine zu zerstören, ohne dass der Ball vom unteren Bildschirmrand fällt.

@@ -1,5 +1,7 @@
 # Break-Out Prototype - Style Guide & Konventionen
 
+> 📘 **English version**: [STYLE_GUIDE_en.md](./STYLE_GUIDE_en.md)
+
 Diese Anleitung dokumentiert die Code-Konventionen und Style-Regeln für das Break-Out Prototype Projekt. Wir folgen dem **Godot GDScript Style Guide** mit projektspezifischen Erweiterungen.
 
 ## Referenzen

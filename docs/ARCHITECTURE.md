@@ -1,5 +1,7 @@
 # Break-Out Prototype - Architektur
 
+> 📘 **English version**: [ARCHITECTURE_en.md](./ARCHITECTURE_en.md)
+
 ## Übersicht
 
 Break-Out Prototype ist ein Godot 4.6 2D-Spiel, das das klassische Breakout/Brick-Breaker Genre implementiert. Die Codebasis folgt einem **hybriden Organisationsansatz**: Komponenten sind nach Features gruppiert (Paddle, Ball, Brick), während gemeinsame Systeme zentral über das Game-Singleton verwaltet werden.

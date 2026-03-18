@@ -1,5 +1,7 @@
 # Break-Out Prototype - Entwicklungshandbuch
 
+> 📘 **English version**: [DEVELOPMENT_en.md](./DEVELOPMENT_en.md)
+
 ## Schnellstart
 
 ### Voraussetzungen
