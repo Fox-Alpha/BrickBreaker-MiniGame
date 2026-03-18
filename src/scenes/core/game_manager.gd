@@ -194,7 +194,9 @@ func _Game_State_Has_Changed(new_gs : Game.GameStates) -> void:
 		
 		Game.GameStates.RUNNING:
 			print("Game: Entering RUNNING state - gameplay active")
-			# Game is now running - gameplay code should activate
+		
+		Game.GameStates.PAUSED:
+			print("Game: Entering PAUSED state")
 		
 		Game.GameStates.GAMEOVER:
 			print("Game: Entering GAMEOVER state")

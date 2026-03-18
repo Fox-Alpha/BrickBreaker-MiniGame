@@ -17,6 +17,10 @@ extends CanvasLayer
 @onready var label_level_score: Label = $LevelCompleteOverlay/CenterContainer/VBoxContainer/LabelScore
 @onready var button_play_again: Button = $LevelCompleteOverlay/CenterContainer/VBoxContainer/ButtonPlayAgain
 @onready var button_main_menu: Button = $LevelCompleteOverlay/CenterContainer/VBoxContainer/ButtonMainMenu
+@onready var pause_overlay: ColorRect = $PauseOverlay
+@onready var button_resume: Button = $PauseOverlay/CenterContainer/VBoxContainer/ButtonResume
+@onready var button_restart_pause: Button = $PauseOverlay/CenterContainer/VBoxContainer/ButtonRestart2
+@onready var button_menu_pause: Button = $PauseOverlay/CenterContainer/VBoxContainer/ButtonMenu
 
 var _gamescore : int = 0
 
@@ -50,6 +54,14 @@ func _ready() -> void:
 		button_play_again.pressed.connect(_on_play_again_pressed)
 	if button_main_menu:
 		button_main_menu.pressed.connect(_on_main_menu_pressed)
+	
+	# Connect pause buttons
+	if button_resume:
+		button_resume.pressed.connect(_on_resume_pressed)
+	if button_restart_pause:
+		button_restart_pause.pressed.connect(_on_restart_pressed)
+	if button_menu_pause:
+		button_menu_pause.pressed.connect(_on_main_menu_pressed)
 	
 	# Connect level complete signal
 	Game.GL_LEVEL_COMPLETE.connect(_on_level_complete)
@@ -120,8 +132,13 @@ func _update_lives_display(lives: int) -> void:
 
 ## Handle game state changes
 func _on_game_state_changed(new_state: Game.GameStates) -> void:
-	if new_state == Game.GameStates.GAMEOVER:
-		_show_game_over()
+	match new_state:
+		Game.GameStates.GAMEOVER:
+			_show_game_over()
+		Game.GameStates.PAUSED:
+			_show_pause()
+		Game.GameStates.RUNNING:
+			_hide_pause()
 
 
 ## Show game over screen
@@ -172,6 +189,29 @@ func _on_play_again_pressed() -> void:
 ## Handle main menu button press
 func _on_main_menu_pressed() -> void:
 	print("UI: Main Menu pressed")
+	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/main_menu/main_menu.tscn")
+
+
+## Show pause overlay and freeze game
+func _show_pause() -> void:
+	if pause_overlay:
+		pause_overlay.visible = true
+	get_tree().paused = true
+	print("UI: Pause screen displayed")
+
+
+## Hide pause overlay and resume game
+func _hide_pause() -> void:
+	if pause_overlay:
+		pause_overlay.visible = false
+	get_tree().paused = false
+	print("UI: Game resumed")
+
+
+## Handle resume button press
+func _on_resume_pressed() -> void:
+	print("UI: Resume pressed")
+	Game.GameState = Game.GameStates.RUNNING
 
 

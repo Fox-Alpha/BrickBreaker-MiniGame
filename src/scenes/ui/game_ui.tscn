@@ -173,6 +173,52 @@ text = "Spiel Starten durch Tastendruck"
 
 [node name="GameTimer" type="Timer" parent="." unique_id=1752769227]
 
+[node name="PauseOverlay" type="ColorRect" parent="."]
+visible = false
+process_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.75)
+
+[node name="CenterContainer" type="CenterContainer" parent="PauseOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseOverlay/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="LabelPause" type="Label" parent="PauseOverlay/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "PAUSE"
+horizontal_alignment = 1
+
+[node name="ButtonResume" type="Button" parent="PauseOverlay/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Weiter"
+
+[node name="ButtonRestart2" type="Button" parent="PauseOverlay/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Neu starten"
+
+[node name="ButtonMenu" type="Button" parent="PauseOverlay/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Hauptmenü"
+
 [node name="GameOverOverlay" type="ColorRect" parent="."]
 visible = false
 anchors_preset = 15

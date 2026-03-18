@@ -95,6 +95,20 @@ func _process(_delta: float) -> void:
 	pass
 
 
+## Handle input events for pause toggle
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause"):
+		_toggle_pause()
+
+
+## Toggle pause state
+func _toggle_pause() -> void:
+	if Game.GameState == Game.GameStates.RUNNING:
+		Game.GameState = Game.GameStates.PAUSED
+	elif Game.GameState == Game.GameStates.PAUSED:
+		Game.GameState = Game.GameStates.RUNNING
+
+
 func startgame() -> void:
 	# Initialize game state
 	Game.init_game()
