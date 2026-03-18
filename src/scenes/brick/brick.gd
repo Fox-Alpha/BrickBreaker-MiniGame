@@ -55,7 +55,8 @@ func _take_damage() -> void:
 
 
 func _destroy(_node: Node2D, _points: int) -> void:
-	get_tree().current_scene.Player_Score.emit(points)
+	# Update centralized score in game manager
+	Game.add_score(points)
 	print("Brick %s / points %s" % [name, points])
 	await _play_destroy_effect()
 	queue_free()

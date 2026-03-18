@@ -41,6 +41,7 @@ func _ready() -> void:
 	# Connect to lives changed signal
 	Game.GL_LIVES_CHANGED.connect(_on_lives_changed)
 	Game.GL_GAMESTATE_CHANGE.connect(_on_game_state_changed)
+	Game.GL_SCORE_CHANGED.connect(_on_score_changed)
 	_update_lives_display(Game.lives)
 	
 	# Connect game over buttons
@@ -115,6 +116,12 @@ func _on_lives_changed(lives_remaining: int) -> void:
 	_update_lives_display(lives_remaining)
 
 
+## Handle score change from game manager
+func _on_score_changed(new_score: int) -> void:
+	_gamescore = new_score
+	label_score.text = "%010d" % _gamescore
+
+
 ## Update visual representation of lives
 func _update_lives_display(lives: int) -> void:
 	# Update label
@@ -153,9 +160,11 @@ func _show_game_over() -> void:
 ## Handle restart button press
 func _on_restart_pressed() -> void:
 	print("UI: Restart button pressed")
-	# TODO: Implement game restart logic
-	game_over_overlay.visible = false
-	get_tree().reload_current_scene()
+	if game_over_overlay:
+		game_over_overlay.visible = false
+	if pause_overlay:
+		pause_overlay.visible = false
+	Game.reset_game()
 
 
 ## Handle quit to menu button press
@@ -183,7 +192,7 @@ func _on_play_again_pressed() -> void:
 	print("UI: Play Again pressed")
 	if level_complete_overlay:
 		level_complete_overlay.visible = false
-	get_tree().reload_current_scene()
+	Game.reset_game()
 
 
 ## Handle main menu button press

@@ -101,6 +101,14 @@ var lives: int = max_lives :
 	get():
 		return lives
 
+## Player score for current session
+var score: int = 0 :
+	set(value):
+		score = max(0, value)
+		GL_SCORE_CHANGED.emit(score)
+	get():
+		return score
+
 #endregion
 
 @onready var rng : RandomNumberGenerator = RandomNumberGenerator.new()
@@ -127,6 +135,8 @@ signal GL_CHANGE_GAMESTATE(gs : GameStates)
 signal GL_BALL_LOST
 ## Lives count changed
 signal GL_LIVES_CHANGED(lives_remaining : int)
+## Score changed
+signal GL_SCORE_CHANGED(new_score : int)
 ## All bricks destroyed - level complete
 signal GL_LEVEL_COMPLETE
 
@@ -245,10 +255,23 @@ func _Game_Max_Round_Reached() -> void:
 	pass
 
 
-## Initialize game session - reset lives to max
+## Initialize game session - reset lives and score
 func init_game() -> void:
 	lives = max_lives
-	print("Game: Lives initialized to %d" % lives)
+	score = 0
+	print("Game: Session initialized - lives=%d, score=%d" % [lives, score])
+
+
+## Reset game completely and reload scene
+func reset_game() -> void:
+	init_game()
+	get_tree().reload_current_scene()
+	print("Game: Game reset triggered")
+
+
+## Add points to score
+func add_score(points: int) -> void:
+	score += points
 
 
 ## Lose one life - called when ball is lost
