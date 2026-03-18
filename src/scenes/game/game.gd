@@ -53,6 +53,7 @@ func _ready() -> void:
 	center_marker.position = get_viewport_rect().get_center()
 	GS_GAME_UNPAUSED.connect(startgame)
 	Game.GL_BALL_LOST.connect(_on_ball_lost)
+	Game.GL_GAMESTATE_CHANGE.connect(_on_game_state_changed, CONNECT_DEFERRED)
 	
 	# Setup respawn timer
 	if not respawn_timer:
@@ -63,8 +64,20 @@ func _ready() -> void:
 		respawn_timer.timeout.connect(_respawn_ball)
 		add_child(respawn_timer)
 	
-	#get_tree().paused = true
-	pass # Replace with function body.
+	# If already in RUNNING state (e.g. scene reloaded), start immediately
+	if Game.GameState == Game.GameStates.RUNNING:
+		startgame()
+
+
+## React to game state changes
+func _on_game_state_changed(new_state: Game.GameStates) -> void:
+	match new_state:
+		Game.GameStates.RUNNING:
+			# Only start if not already started (no ball/paddle yet)
+			if not paddle_instance or not is_instance_valid(paddle_instance):
+				startgame()
+		Game.GameStates.GAMEOVER:
+			print("Game: Game over state received")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
