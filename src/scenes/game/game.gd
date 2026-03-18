@@ -73,6 +73,9 @@ func _process(_delta: float) -> void:
 
 
 func startgame() -> void:
+	# Initialize game state
+	Game.init_game()
+	
 	var pad := paddle.instantiate()
 	spawn_ball()
 	canvas_layer.ball = ball
