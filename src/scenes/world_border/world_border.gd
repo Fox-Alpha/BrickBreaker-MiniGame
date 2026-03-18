@@ -28,15 +28,15 @@ func reset_world_border_positions(margin_to_vwpt: Vector4i = Vector4i.ZERO) -> v
 	var viewport_size = get_viewport_rect()
 	viewport_size.size.y -= margin_to_vwpt.x
 	viewport_size.position.y += margin_to_vwpt.x
-	
+
 	top_border.global_position.x = viewport_size.size.x / 2.0
 	top_border.global_position.y = viewport_size.position.y
-	
+
 	right_border.global_position.x = viewport_size.size.x
 	right_border.global_position.y = viewport_size.end.y / 2.0
-	
+
 	bottom_border.global_position.x = viewport_size.size.x / 2.0
 	bottom_border.global_position.y = viewport_size.position.y + viewport_size.size.y
-	
+
 	left_border.global_position.x = viewport_size.position.x
 	left_border.global_position.y = viewport_size.end.y / 2.0

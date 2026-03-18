@@ -12,12 +12,12 @@ distance = 5.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_d5ebf"]
 
-[node name="WorldBoundarys" type="Node2D" unique_id=1209013931 node_paths=PackedStringArray("LeftBorder", "TopBorder", "RightBorder", "BottomBorder")]
+[node name="WorldBoundarys" type="Node2D" unique_id=1209013931 node_paths=PackedStringArray("left_border", "top_border", "right_border", "bottom_border")]
 script = ExtResource("1_dmdjc")
-LeftBorder = NodePath("LeftBorder")
-TopBorder = NodePath("TopBorder")
-RightBorder = NodePath("RightBorder")
-BottomBorder = NodePath("BottomBorder")
+left_border = NodePath("LeftBorder")
+top_border = NodePath("TopBorder")
+right_border = NodePath("RightBorder")
+bottom_border = NodePath("BottomBorder")
 
 [node name="LeftBorder" type="StaticBody2D" parent="." unique_id=1220772003 groups=["Wall"]]
 z_index = 25
