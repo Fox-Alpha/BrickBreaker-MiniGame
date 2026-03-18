@@ -12,7 +12,7 @@ class_name PaddleController extends CharacterBody2D
 @export var use_mouse := true
 @export var mouse_sensitivity: float = 1.0
 
-func getPaddleSize() -> Vector2i:
+func get_paddle_size() -> Vector2i:
 	return paddle_collision.shape.size
 
 
@@ -63,7 +63,7 @@ func _reset_position() -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "Ball":  # Passe den Namen an deinen Ball an
 		# Berechne relativen Treffpunkt (-1 bis 1)
-		var hit_pos = (body.global_position.x - global_position.x) / getPaddleSize().x / 2
+		var hit_pos = (body.global_position.x - global_position.x) / get_paddle_size().x / 2
 
 		# Ändere Ball-Richtung basierend auf Treffpunkt
 		var bounce_angle = hit_pos * 60  # Max 60 Grad Ablenkung
