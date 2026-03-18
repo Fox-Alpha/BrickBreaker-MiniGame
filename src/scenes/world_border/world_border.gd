@@ -15,7 +15,10 @@ class_name WorldBoundarys extends Node2D
 
 
 func _ready() -> void:
-	pass
+	if bottom_border and bottom_border.has_node("BallLossDetector"):
+		var detector = bottom_border.get_node("BallLossDetector")
+		if detector is Area2D:
+			detector.body_entered.connect(_on_ball_loss_detector_entered)
 
 
 ## Sets the World Border Position with the Map Size [br]
@@ -40,3 +43,10 @@ func reset_world_border_positions(margin_to_vwpt: Vector4i = Vector4i.ZERO) -> v
 
 	left_border.global_position.x = viewport_size.position.x
 	left_border.global_position.y = viewport_size.end.y / 2.0
+
+
+## Handles ball loss when it passes bottom boundary
+func _on_ball_loss_detector_entered(body: Node2D) -> void:
+	if body.is_in_group("Ball"):
+		print("WorldBorder: Ball lost - fell off bottom edge")
+		Game.GL_BALL_LOST.emit()

@@ -111,6 +111,10 @@ signal Game_Window_Size_Changed
 signal GL_GAMESTATE_CHANGE(gs : GameStates)
 ## Change Gamestate to new state
 signal GL_CHANGE_GAMESTATE(gs : GameStates)
+## Ball was lost (fell off bottom boundary)
+signal GL_BALL_LOST
+## Lives count changed
+signal GL_LIVES_CHANGED(lives_remaining : int)
 
 #signal Register_Game_Logic(instanceid : int)
 #signal Register_UI_Manager(instanceid : int)
