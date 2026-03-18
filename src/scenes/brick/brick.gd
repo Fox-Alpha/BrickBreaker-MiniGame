@@ -19,27 +19,25 @@ signal brick_destroyed(brick, points)
 
 var current_hit_points: int
 
-func _ready():
+func _ready() -> void:
 	current_hit_points = hit_points
-	#_update_visual()
-
+	
 	# PhysicsMaterial für perfekte Reflexion
 	var physics_material = PhysicsMaterial.new()
 	physics_material.bounce = 1.0
 	physics_material.friction = 0.0
 	physics_material_override = physics_material
-
+	
 	brick_destroyed.connect(_destroy, ConnectFlags.CONNECT_DEFERRED)
 	tree_entered.connect(_on_tree_entered, ConnectFlags.CONNECT_ONE_SHOT)
 
 
 func _on_tree_entered() -> void:
-	name = "Brick_" +str(get_instance_id())
+	name = "Brick_" + str(get_instance_id())
 	randomize()
-	hit_points = 1 # [1.0,2.0][randi() % 2]
-	points = 10 #[node.hit_points,50][randi() % 2]
+	hit_points = 1
+	points = 10
 	add_to_group("Brick", true)
-	pass # Replace with function body.
 
 
 func _on_brick_area_body_entered(body: Node2D) -> void:
@@ -47,30 +45,28 @@ func _on_brick_area_body_entered(body: Node2D) -> void:
 		_take_damage()
 
 
-func _take_damage():
+func _take_damage() -> void:
 	current_hit_points -= 1
-
+	
 	if current_hit_points <= 0:
 		brick_destroyed.emit(self, points)
-		#_destroy()
 	else:
-		#_update_visual()
 		await _play_hit_effect()
 
 
-func _destroy(_node : Node2D, _points : int):
+func _destroy(_node: Node2D, _points: int) -> void:
 	get_tree().current_scene.Player_Score.emit(points)
 	print("Brick %s / points %s" % [name, points])
 	await _play_destroy_effect()
 	queue_free()
 
 
-func _update_visual():
+func _update_visual() -> void:
 	var sprite = $Sprite2D if has_node("Sprite2D") else null
 	var color_rect = $ColorRect if has_node("ColorRect") else null
-
+	
 	var color = _get_color_for_health()
-
+	
 	if sprite:
 		sprite.self_modulate = color
 	elif color_rect:
@@ -86,26 +82,20 @@ func _get_color_for_health() -> Color:
 		return colors_by_health[-1]  # Letzte Farbe für hohe HP
 
 
-func _play_hit_effect():
-	# Kurzes Blinken
+func _play_hit_effect() -> void:
 	var tween = create_tween()
 	tween.tween_property(self, "self_modulate", Color.WHITE, 0.6)
 	tween.tween_property(self, "self_modulate", Color(1, 1, 1, 1), 0.6)
 	await tween.finished
-	pass
-	#return true
 
 
-func _play_destroy_effect():
-	# Partikeleffekt oder Animation beim Zerstören
+func _play_destroy_effect() -> void:
 	var tween = create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC).set_parallel(true)
-	tween.tween_property(self, "scale", Vector2(1.25,1.5), 0.5).from_current()
+	tween.tween_property(self, "scale", Vector2(1.25, 1.5), 0.5).from_current()
 	tween.tween_property(self, "scale", Vector2.ZERO, 1.5).from_current()
 	tween.tween_property(self, "modulate:a", 0.0, 0.5)
 	await tween.finished
-	pass
-	#return true
 
 
-func _on_tweening() -> void :
+func _on_tweening() -> void:
 	print("OnTweening()")

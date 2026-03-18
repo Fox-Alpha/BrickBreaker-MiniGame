@@ -2,21 +2,19 @@
 class_name WorldBoundarys extends Node2D
 
 
-
 ## Border Nodes
 @export_group("Borders")
 ## Holds a [StaticBody2D] as the Left Border Node
-@export var LeftBorder : StaticBody2D
+@export var left_border: StaticBody2D
 ## Holds a [StaticBody2D] as the Top Border Node
-@export var TopBorder : StaticBody2D
+@export var top_border: StaticBody2D
 ## Holds a [StaticBody2D] as the Right Border Node
-@export var RightBorder : StaticBody2D
+@export var right_border: StaticBody2D
 ## Holds a [StaticBody2D] as the Bottom Border Node
-@export var BottomBorder : StaticBody2D
+@export var bottom_border: StaticBody2D
 
 
 func _ready() -> void:
-	#Multihelper.terrain_generated.connect(ResetWorldBorderPositions)
 	pass
 
 
@@ -25,22 +23,20 @@ func _ready() -> void:
 # [param maprect] : [Vector2i] Bottom right point from Mapsize[br]
 ## [param _layer] (unused): Map Layer Index [br]
 ## [param maprect] [Recti2D] Used Tile Rect
-func ResetWorldBorderPositions(margin_to_vwpt : Vector4i = Vector4i.ZERO) -> void:
-	print("ResetWorldBorderPositions() with margin to ViewPort: %s" % [margin_to_vwpt])
-	var VpSz = get_viewport_rect()
-	VpSz.size.y -= margin_to_vwpt.x
-	VpSz.position.y += margin_to_vwpt.x
-
-	TopBorder.global_position.x = VpSz.size.x / 2.0
-	TopBorder.global_position.y = VpSz.position.y
-
-	RightBorder.global_position.x = VpSz.size.x
-	RightBorder.global_position.y = VpSz.end.y / 2.0
-
-	BottomBorder.global_position.x = VpSz.size.x / 2.0
-	BottomBorder.global_position.y = VpSz.position.y +VpSz.size.y
-
-	LeftBorder.global_position.x = VpSz.position.x
-	LeftBorder.global_position.y = VpSz.end.y / 2.0
-
-	pass
+func reset_world_border_positions(margin_to_vwpt: Vector4i = Vector4i.ZERO) -> void:
+	print("reset_world_border_positions() with margin to ViewPort: %s" % [margin_to_vwpt])
+	var viewport_size = get_viewport_rect()
+	viewport_size.size.y -= margin_to_vwpt.x
+	viewport_size.position.y += margin_to_vwpt.x
+	
+	top_border.global_position.x = viewport_size.size.x / 2.0
+	top_border.global_position.y = viewport_size.position.y
+	
+	right_border.global_position.x = viewport_size.size.x
+	right_border.global_position.y = viewport_size.end.y / 2.0
+	
+	bottom_border.global_position.x = viewport_size.size.x / 2.0
+	bottom_border.global_position.y = viewport_size.position.y + viewport_size.size.y
+	
+	left_border.global_position.x = viewport_size.position.x
+	left_border.global_position.y = viewport_size.end.y / 2.0
