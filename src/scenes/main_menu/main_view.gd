@@ -36,7 +36,16 @@ func _on_button_multiplayer_options_pressed():
 
 
 func _on_button_start_pressed():
-	start_options.visible = !start_options.visible
+	print("MainMenu: Start button pressed - starting game")
+	# Change state to LOADING
+	Game.GameState = Game.GameStates.LOADING
+	
+	# Switch to game scene
+	var err = get_tree().change_scene_to_file("res://scenes/game/game.tscn")
+	if err != OK:
+		print("ERROR: Failed to load game scene - %s" % error_string(err))
+		Game.GameState = Game.GameStates.ERROR
+
 
 
 func _on_button_quit_pressed() -> void:
