@@ -181,25 +181,23 @@ func _Game_State_On_Change_State(new_gs : Game.GameStates) -> void:
 	pass
 
 func _Game_State_Has_Changed(new_gs : Game.GameStates) -> void:
-	#if GameState == new_gs: return
-
-	#GameState = new_gs
 	print("Global Autoload => _Game_State_Has_Changed(GS:%s)" % Game.GameStates.keys()[new_gs])
-	#match new_gs:
-		#Game.GameStates.GAMEISLOADING:
-			#pass
-		#Game.GameStates.GAMEINITIALIZING:
-			#pass
-		#Game.GameStates.GAMEINITIALIZED:
-			#_Connect_Signals()
-			#pass
-		#Game.GameStates.GAMEWAITFORSTART:
-			#pass
-		#Game.GameStates.GAMEISSTARTED:
-			#pass
-		#Game.GameStates.GAMEOVER:
-			##TBD Change Scene to Score Table
-			#pass
+	
+	match new_gs:
+		Game.GameStates.LOADING:
+			print("Game: Entering LOADING state...")
+			# Scene is being loaded, transition to RUNNING after brief delay
+			await get_tree().create_timer(0.1).timeout
+			GameState = Game.GameStates.RUNNING
+		
+		Game.GameStates.RUNNING:
+			print("Game: Entering RUNNING state - gameplay active")
+			# Game is now running - gameplay code should activate
+		
+		Game.GameStates.GAMEOVER:
+			print("Game: Entering GAMEOVER state")
+			# Game over screen is handled by game_ui
+
 
 
 func _Connect_Signals() -> void:
