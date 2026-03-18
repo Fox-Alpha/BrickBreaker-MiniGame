@@ -4,6 +4,12 @@
 
 Break-Out Prototype is a Godot 4.6 (2D) breakout/brick-breaker game built with GDScript. The project is a single-player prototype featuring a paddle-controlled ball that destroys bricks on a tilemap.
 
+**Branch Strategy**:
+- **`develop`** - Active development branch (default for ongoing work)
+- **`main`** - Release-only branch (tagged versions only)
+
+See `BRANCHING.md` for complete Git workflow details.
+
 ## Build, Test & Export
 
 ### Running the Game
@@ -168,15 +174,32 @@ assets/                             # Non-code assets
   audio/
 
 docs/                               # Technical documentation
-  ARCHITECTURE.md
+  ARCHITECTURE.md                  # German (default)
+  ARCHITECTURE_en.md               # English version
   DEVELOPMENT.md
+  DEVELOPMENT_en.md
   STYLE_GUIDE.md
+  STYLE_GUIDE_en.md
   GAME_DESIGN.md
+  GAME_DESIGN_en.md
 
+README.md                           # Project overview (German)
+BRANCHING.md                        # Git workflow & branch strategy
 .github/
   copilot-instructions.md
   mcp-servers.json
+.vscode/
+  settings.json                     # Godot LSP configuration
 ```
+
+## Documentation
+
+The project maintains **bilingual documentation** (German and English):
+
+- **German** (default, no suffix): `ARCHITECTURE.md`, `DEVELOPMENT.md`, `STYLE_GUIDE.md`, `GAME_DESIGN.md`
+- **English** (with `_en` suffix): `ARCHITECTURE_en.md`, `DEVELOPMENT_en.md`, etc.
+
+When referencing documentation, link to the German version by default. English versions are available for international contributors.
 
 ## Debugging Tips
 
