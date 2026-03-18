@@ -13,6 +13,10 @@ extends CanvasLayer
 @onready var label_final_score: Label = $GameOverOverlay/CenterContainer/VBoxContainer/LabelFinalScore
 @onready var button_restart: Button = $GameOverOverlay/CenterContainer/VBoxContainer/ButtonRestart
 @onready var button_quit: Button = $GameOverOverlay/CenterContainer/VBoxContainer/ButtonQuit
+@onready var level_complete_overlay: ColorRect = $LevelCompleteOverlay
+@onready var label_level_score: Label = $LevelCompleteOverlay/CenterContainer/VBoxContainer/LabelScore
+@onready var button_play_again: Button = $LevelCompleteOverlay/CenterContainer/VBoxContainer/ButtonPlayAgain
+@onready var button_main_menu: Button = $LevelCompleteOverlay/CenterContainer/VBoxContainer/ButtonMainMenu
 
 var _gamescore : int = 0
 
@@ -40,6 +44,15 @@ func _ready() -> void:
 		button_restart.pressed.connect(_on_restart_pressed)
 	if button_quit:
 		button_quit.pressed.connect(_on_quit_pressed)
+	
+	# Connect level complete buttons
+	if button_play_again:
+		button_play_again.pressed.connect(_on_play_again_pressed)
+	if button_main_menu:
+		button_main_menu.pressed.connect(_on_main_menu_pressed)
+	
+	# Connect level complete signal
+	Game.GL_LEVEL_COMPLETE.connect(_on_level_complete)
 	
 	if get_tree().current_scene.has_signal("GS_GAME_PAUSED"):
 		get_tree().current_scene.GS_GAME_PAUSED.connect(_on_player_score)
@@ -131,7 +144,34 @@ func _on_restart_pressed() -> void:
 ## Handle quit to menu button press
 func _on_quit_pressed() -> void:
 	print("UI: Quit to menu pressed")
-	# TODO: Implement menu transition
-	get_tree().quit()
+	get_tree().change_scene_to_file("res://scenes/main_menu/main_menu.tscn")
+
+
+## Handle level complete signal
+func _on_level_complete() -> void:
+	_show_level_complete()
+
+
+## Show level complete screen
+func _show_level_complete() -> void:
+	if level_complete_overlay:
+		level_complete_overlay.visible = true
+	if label_level_score:
+		label_level_score.text = "Score: %s" % label_score.text
+	print("UI: Level Complete screen displayed")
+
+
+## Handle play again button press
+func _on_play_again_pressed() -> void:
+	print("UI: Play Again pressed")
+	if level_complete_overlay:
+		level_complete_overlay.visible = false
+	get_tree().reload_current_scene()
+
+
+## Handle main menu button press
+func _on_main_menu_pressed() -> void:
+	print("UI: Main Menu pressed")
+	get_tree().change_scene_to_file("res://scenes/main_menu/main_menu.tscn")
 
 

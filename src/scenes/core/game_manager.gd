@@ -127,6 +127,8 @@ signal GL_CHANGE_GAMESTATE(gs : GameStates)
 signal GL_BALL_LOST
 ## Lives count changed
 signal GL_LIVES_CHANGED(lives_remaining : int)
+## All bricks destroyed - level complete
+signal GL_LEVEL_COMPLETE
 
 #signal Register_Game_Logic(instanceid : int)
 #signal Register_UI_Manager(instanceid : int)

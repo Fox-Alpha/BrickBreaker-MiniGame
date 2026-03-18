@@ -218,3 +218,48 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "Quit to Menu"
 
+[node name="LevelCompleteOverlay" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0, 0.2, 0.0, 0.85)
+
+[node name="CenterContainer" type="CenterContainer" parent="LevelCompleteOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelCompleteOverlay/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="LabelLevelComplete" type="Label" parent="LevelCompleteOverlay/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 72
+text = "LEVEL COMPLETE!"
+horizontal_alignment = 1
+
+[node name="LabelScore" type="Label" parent="LevelCompleteOverlay/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Score: 0"
+horizontal_alignment = 1
+
+[node name="ButtonPlayAgain" type="Button" parent="LevelCompleteOverlay/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Play Again"
+
+[node name="ButtonMainMenu" type="Button" parent="LevelCompleteOverlay/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Main Menu"
+

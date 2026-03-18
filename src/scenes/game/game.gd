@@ -48,7 +48,7 @@ var worldsize : Vector2i = Vector2i(800,800)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	NoMoreBrickInMap.connect(func(): print("Keine Bricks mehr da"))
+	NoMoreBrickInMap.connect(_on_no_more_bricks)
 	cam.position = get_viewport_rect().get_center()
 	center_marker.position = get_viewport_rect().get_center()
 	GS_GAME_UNPAUSED.connect(startgame)
@@ -78,6 +78,16 @@ func _on_game_state_changed(new_state: Game.GameStates) -> void:
 				startgame()
 		Game.GameStates.GAMEOVER:
 			print("Game: Game over state received")
+
+
+## Handle level complete when all bricks are destroyed
+func _on_no_more_bricks() -> void:
+	print("Game: All bricks destroyed - Level Complete!")
+	Game.GL_LEVEL_COMPLETE.emit()
+	# Stop ball
+	if ball and is_instance_valid(ball):
+		ball.linear_velocity = Vector2.ZERO
+		ball.freeze = true
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
