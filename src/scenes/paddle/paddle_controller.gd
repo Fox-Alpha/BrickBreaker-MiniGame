@@ -1,7 +1,7 @@
 class_name PaddleController extends CharacterBody2D
 
 
-@export_range(100.0,1000.0,10.0) var SPEED = 650.0
+@export_range(100.0, 1000.0, 10.0) var SPEED = 650.0
 
 @export_color_no_alpha var playercolor
 @onready var paddle_collision: CollisionShape2D = $PaddleCollision
@@ -15,59 +15,48 @@ class_name PaddleController extends CharacterBody2D
 func getPaddleSize() -> Vector2i:
 	return paddle_collision.shape.size
 
-func _ready():
+
+func _ready() -> void:
 	$Paddle.self_modulate = playercolor
-	pass
 
 
-func _process(_delta):
-
-	pass
-
-
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	if use_mouse:
 		_mouse_move()
 	else:
 		_move_with_keyboard(delta)
-
+	
 	# Bewegung ausführen
 	move_and_slide()
 
-func _mouse_move():
+
+func _mouse_move() -> void:
 	var mouse_pos = get_viewport().get_mouse_position()
 	var target_x = mouse_pos.x
-
+	
 	# Sanfte Bewegung
 	position.x = lerp(position.x, target_x, mouse_sensitivity * 0.3)
-
+	
 	# Velocity für Physics setzen (wichtig für Kollisionen)
 	velocity.x = (target_x - position.x) * 10
-	pass
 
 
-func _move_with_keyboard(delta):
+func _move_with_keyboard(delta: float) -> void:
 	var direction := 0.0
-
+	
 	direction = Input.get_axis("p1_left", "p1_right")
-
+	
 	if direction != 0:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED * delta * 5)
-
+	
 	velocity = direction * SPEED * delta
 
-	#var collision := move_and_collide(velocity)
-	#if collision:
-		#pass
 
-
-func _reset_position():
+func _reset_position() -> void:
 	# Paddle Positionen
-	position.x = get_viewport_rect().size.x/2
-
-	#var col = Game.get_playercolor(PlayerPaddle)
+	position.x = get_viewport_rect().size.x / 2
 	$Paddle.self_modulate = playercolor
 
 
