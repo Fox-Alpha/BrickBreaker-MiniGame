@@ -39,7 +39,7 @@ func _on_button_start_pressed():
 	print("MainMenu: Start button pressed - starting game")
 	# Change state to LOADING
 	Game.GameState = Game.GameStates.LOADING
-	
+
 	# Switch to game scene
 	var err = get_tree().change_scene_to_file("res://scenes/game/game.tscn")
 	if err != OK:

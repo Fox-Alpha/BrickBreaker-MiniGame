@@ -80,13 +80,13 @@ layout_mode = 2
 theme_override_constants/separation = 4
 theme_override_styles/separator = SubResource("StyleBoxFlat_rpywg")
 
-[node name="LabelLives" type="Label" parent="VBoxContainer/PanelContainer/Panel/HBoxContainer"]
+[node name="LabelLives" type="Label" parent="VBoxContainer/PanelContainer/Panel/HBoxContainer" unique_id=2105631250]
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 28
 text = "Lives: 3"
 
-[node name="VSeparator7" type="VSeparator" parent="VBoxContainer/PanelContainer/Panel/HBoxContainer"]
+[node name="VSeparator7" type="VSeparator" parent="VBoxContainer/PanelContainer/Panel/HBoxContainer" unique_id=1322912326]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 theme_override_constants/separation = 4
@@ -143,7 +143,7 @@ theme_override_constants/separation = 15
 theme_override_styles/separator = SubResource("StyleBoxFlat_rpywg")
 
 [node name="ColorRect" type="ColorRect" parent="VBoxContainer" unique_id=713242519]
-process_mode = 2
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.14847952, 0.3958594, 0.41709244, 0.49019608)
@@ -173,9 +173,9 @@ text = "Spiel Starten durch Tastendruck"
 
 [node name="GameTimer" type="Timer" parent="." unique_id=1752769227]
 
-[node name="PauseOverlay" type="ColorRect" parent="."]
-visible = false
+[node name="PauseOverlay" type="ColorRect" parent="." unique_id=439637252]
 process_mode = 3
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -183,7 +183,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.75)
 
-[node name="CenterContainer" type="CenterContainer" parent="PauseOverlay"]
+[node name="CenterContainer" type="CenterContainer" parent="PauseOverlay" unique_id=1481511744]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -191,35 +191,35 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PauseOverlay/CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseOverlay/CenterContainer" unique_id=646050922]
 layout_mode = 2
 theme_override_constants/separation = 24
 
-[node name="LabelPause" type="Label" parent="PauseOverlay/CenterContainer/VBoxContainer"]
+[node name="LabelPause" type="Label" parent="PauseOverlay/CenterContainer/VBoxContainer" unique_id=1292196625]
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "PAUSE"
 horizontal_alignment = 1
 
-[node name="ButtonResume" type="Button" parent="PauseOverlay/CenterContainer/VBoxContainer"]
+[node name="ButtonResume" type="Button" parent="PauseOverlay/CenterContainer/VBoxContainer" unique_id=132681870]
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "Weiter"
 
-[node name="ButtonRestart2" type="Button" parent="PauseOverlay/CenterContainer/VBoxContainer"]
+[node name="ButtonRestart2" type="Button" parent="PauseOverlay/CenterContainer/VBoxContainer" unique_id=272971315]
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "Neu starten"
 
-[node name="ButtonMenu" type="Button" parent="PauseOverlay/CenterContainer/VBoxContainer"]
+[node name="ButtonMenu" type="Button" parent="PauseOverlay/CenterContainer/VBoxContainer" unique_id=1195822124]
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "Hauptmenü"
 
-[node name="GameOverOverlay" type="ColorRect" parent="."]
+[node name="GameOverOverlay" type="ColorRect" parent="." unique_id=1513772378]
 visible = false
 anchors_preset = 15
 anchor_right = 1.0
@@ -228,7 +228,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.8)
 
-[node name="CenterContainer" type="CenterContainer" parent="GameOverOverlay"]
+[node name="CenterContainer" type="CenterContainer" parent="GameOverOverlay" unique_id=41936831]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -236,44 +236,44 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="GameOverOverlay/CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOverOverlay/CenterContainer" unique_id=260347181]
 layout_mode = 2
 theme_override_constants/separation = 30
 
-[node name="LabelGameOver" type="Label" parent="GameOverOverlay/CenterContainer/VBoxContainer"]
+[node name="LabelGameOver" type="Label" parent="GameOverOverlay/CenterContainer/VBoxContainer" unique_id=947375972]
 layout_mode = 2
 theme_override_font_sizes/font_size = 72
 text = "GAME OVER"
 horizontal_alignment = 1
 
-[node name="LabelFinalScore" type="Label" parent="GameOverOverlay/CenterContainer/VBoxContainer"]
+[node name="LabelFinalScore" type="Label" parent="GameOverOverlay/CenterContainer/VBoxContainer" unique_id=95607803]
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
 text = "Final Score: 0"
 horizontal_alignment = 1
 
-[node name="ButtonRestart" type="Button" parent="GameOverOverlay/CenterContainer/VBoxContainer"]
+[node name="ButtonRestart" type="Button" parent="GameOverOverlay/CenterContainer/VBoxContainer" unique_id=460090666]
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "Restart"
 
-[node name="ButtonQuit" type="Button" parent="GameOverOverlay/CenterContainer/VBoxContainer"]
+[node name="ButtonQuit" type="Button" parent="GameOverOverlay/CenterContainer/VBoxContainer" unique_id=1339390076]
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "Quit to Menu"
 
-[node name="LevelCompleteOverlay" type="ColorRect" parent="."]
+[node name="LevelCompleteOverlay" type="ColorRect" parent="." unique_id=1482870887]
 visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.0, 0.2, 0.0, 0.85)
+color = Color(0, 0.2, 0, 0.85)
 
-[node name="CenterContainer" type="CenterContainer" parent="LevelCompleteOverlay"]
+[node name="CenterContainer" type="CenterContainer" parent="LevelCompleteOverlay" unique_id=1226527121]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -281,31 +281,30 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="LevelCompleteOverlay/CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelCompleteOverlay/CenterContainer" unique_id=831238548]
 layout_mode = 2
 theme_override_constants/separation = 30
 
-[node name="LabelLevelComplete" type="Label" parent="LevelCompleteOverlay/CenterContainer/VBoxContainer"]
+[node name="LabelLevelComplete" type="Label" parent="LevelCompleteOverlay/CenterContainer/VBoxContainer" unique_id=105411444]
 layout_mode = 2
 theme_override_font_sizes/font_size = 72
 text = "LEVEL COMPLETE!"
 horizontal_alignment = 1
 
-[node name="LabelScore" type="Label" parent="LevelCompleteOverlay/CenterContainer/VBoxContainer"]
+[node name="LabelScore" type="Label" parent="LevelCompleteOverlay/CenterContainer/VBoxContainer" unique_id=633714619]
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
 text = "Score: 0"
 horizontal_alignment = 1
 
-[node name="ButtonPlayAgain" type="Button" parent="LevelCompleteOverlay/CenterContainer/VBoxContainer"]
+[node name="ButtonPlayAgain" type="Button" parent="LevelCompleteOverlay/CenterContainer/VBoxContainer" unique_id=2108672737]
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "Play Again"
 
-[node name="ButtonMainMenu" type="Button" parent="LevelCompleteOverlay/CenterContainer/VBoxContainer"]
+[node name="ButtonMainMenu" type="Button" parent="LevelCompleteOverlay/CenterContainer/VBoxContainer" unique_id=361015551]
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "Main Menu"
-

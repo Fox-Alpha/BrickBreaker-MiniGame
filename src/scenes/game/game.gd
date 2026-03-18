@@ -54,7 +54,7 @@ func _ready() -> void:
 	GS_GAME_UNPAUSED.connect(startgame)
 	Game.GL_BALL_LOST.connect(_on_ball_lost)
 	Game.GL_GAMESTATE_CHANGE.connect(_on_game_state_changed, CONNECT_DEFERRED)
-	
+
 	# Setup respawn timer
 	if not respawn_timer:
 		respawn_timer = Timer.new()
@@ -63,7 +63,7 @@ func _ready() -> void:
 		respawn_timer.wait_time = 1.5
 		respawn_timer.timeout.connect(_respawn_ball)
 		add_child(respawn_timer)
-	
+
 	# If already in RUNNING state (e.g. scene reloaded), start immediately
 	if Game.GameState == Game.GameStates.RUNNING:
 		startgame()
@@ -112,7 +112,7 @@ func _toggle_pause() -> void:
 func startgame() -> void:
 	# Initialize game state
 	Game.init_game()
-	
+
 	var pad := paddle.instantiate()
 	spawn_ball()
 	canvas_layer.ball = ball
@@ -125,13 +125,13 @@ func startgame() -> void:
 ## Spawn ball at paddle position
 func spawn_ball() -> void:
 	ball = BALL_BODY.instantiate()
-	
+
 	# Position ball above paddle if it exists, else at bottom center
 	if paddle_instance and is_instance_valid(paddle_instance):
 		ball.global_position = paddle_instance.global_position + Vector2(0, -20)
 	else:
 		ball.global_position = Vector2(vps.get_center().x, vps.end.y - 164)
-	
+
 	add_child(ball)
 	print("Game: Ball spawned at position %s" % ball.global_position)
 
@@ -139,12 +139,12 @@ func spawn_ball() -> void:
 ## Handle ball loss - remove old ball and start respawn timer
 func _on_ball_lost() -> void:
 	print("Game: Ball lost, starting respawn countdown...")
-	
+
 	# Remove old ball
 	if ball and is_instance_valid(ball):
 		ball.queue_free()
 		ball = null
-	
+
 	# Only respawn if player has lives remaining (not game over)
 	if Game.lives > 0:
 		respawn_timer.start()
@@ -155,4 +155,3 @@ func _respawn_ball() -> void:
 	print("Game: Respawning ball...")
 	spawn_ball()
 	Ball_Respawned.emit()
-

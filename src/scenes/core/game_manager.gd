@@ -194,20 +194,20 @@ func _Game_State_On_Change_State(new_gs : Game.GameStates) -> void:
 
 func _Game_State_Has_Changed(new_gs : Game.GameStates) -> void:
 	print("Global Autoload => _Game_State_Has_Changed(GS:%s)" % Game.GameStates.keys()[new_gs])
-	
+
 	match new_gs:
 		Game.GameStates.LOADING:
 			print("Game: Entering LOADING state...")
 			# Scene is being loaded, transition to RUNNING after brief delay
 			await get_tree().create_timer(0.1).timeout
 			GameState = Game.GameStates.RUNNING
-		
+
 		Game.GameStates.RUNNING:
 			print("Game: Entering RUNNING state - gameplay active")
-		
+
 		Game.GameStates.PAUSED:
 			print("Game: Entering PAUSED state")
-		
+
 		Game.GameStates.GAMEOVER:
 			print("Game: Entering GAMEOVER state")
 			# Game over screen is handled by game_ui

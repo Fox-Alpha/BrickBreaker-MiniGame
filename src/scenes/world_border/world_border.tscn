@@ -61,10 +61,10 @@ physics_material_override = ExtResource("2_p6qt1")
 [node name="Collision" type="CollisionShape2D" parent="BottomBorder" unique_id=1037694235]
 shape = SubResource("WorldBoundaryShape2D_d5ebf")
 
-[node name="BallLossDetector" type="Area2D" parent="BottomBorder"]
+[node name="BallLossDetector" type="Area2D" parent="BottomBorder" unique_id=1407369644]
 collision_layer = 0
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomBorder/BallLossDetector"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomBorder/BallLossDetector" unique_id=608297797]
 position = Vector2(0, 10)
 shape = SubResource("RectangleShape2D_ball_loss")

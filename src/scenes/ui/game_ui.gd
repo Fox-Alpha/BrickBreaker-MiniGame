@@ -37,25 +37,25 @@ func _ready() -> void:
 			)
 	else:
 		reset_button.hide()
-	
+
 	# Connect to lives changed signal
 	Game.GL_LIVES_CHANGED.connect(_on_lives_changed)
 	Game.GL_GAMESTATE_CHANGE.connect(_on_game_state_changed)
 	Game.GL_SCORE_CHANGED.connect(_on_score_changed)
 	_update_lives_display(Game.lives)
-	
+
 	# Connect game over buttons
 	if button_restart:
 		button_restart.pressed.connect(_on_restart_pressed)
 	if button_quit:
 		button_quit.pressed.connect(_on_quit_pressed)
-	
+
 	# Connect level complete buttons
 	if button_play_again:
 		button_play_again.pressed.connect(_on_play_again_pressed)
 	if button_main_menu:
 		button_main_menu.pressed.connect(_on_main_menu_pressed)
-	
+
 	# Connect pause buttons
 	if button_resume:
 		button_resume.pressed.connect(_on_resume_pressed)
@@ -63,12 +63,12 @@ func _ready() -> void:
 		button_restart_pause.pressed.connect(_on_restart_pressed)
 	if button_menu_pause:
 		button_menu_pause.pressed.connect(_on_main_menu_pressed)
-	
+
 	# Connect level complete signal
 	Game.GL_LEVEL_COMPLETE.connect(_on_level_complete)
-	
+
 	if get_tree().current_scene.has_signal("GS_GAME_PAUSED"):
-		get_tree().current_scene.GS_GAME_PAUSED.connect(_on_player_score)
+		get_tree().current_scene.GS_GAME_PAUSED.connect(_on_game_paused)
 		# RECT Einblenden
 		pass
 	if get_tree().current_scene.has_signal("GS_GAME_UNPAUSED"):
@@ -127,7 +127,7 @@ func _update_lives_display(lives: int) -> void:
 	# Update label
 	if label_lives:
 		label_lives.text = "Lives: %d" % lives
-	
+
 	# Update icons (3 paddle icons for 3 lives)
 	if lives_icon_1:
 		lives_icon_1.visible = lives >= 1
@@ -222,5 +222,3 @@ func _hide_pause() -> void:
 func _on_resume_pressed() -> void:
 	print("UI: Resume pressed")
 	Game.GameState = Game.GameStates.RUNNING
-
-
