@@ -3,6 +3,10 @@ extends CanvasLayer
 @export var ball : RigidBody2D
 
 @onready var label_score: Label = $VBoxContainer/PanelContainer/Panel/HBoxContainer/LabelScore
+@onready var label_lives: Label = $VBoxContainer/PanelContainer/Panel/HBoxContainer/LabelLives
+@onready var lives_icon_1: TextureRect = $VBoxContainer/PanelContainer/Panel/HBoxContainer/TextureRect
+@onready var lives_icon_2: TextureRect = $VBoxContainer/PanelContainer/Panel/HBoxContainer/TextureRect2
+@onready var lives_icon_3: TextureRect = $VBoxContainer/PanelContainer/Panel/HBoxContainer/TextureRect3
 @onready var reset_button: Button = $VBoxContainer/PanelContainer/Panel/HBoxContainer/ButtonResetGame
 @onready var color_rect: ColorRect = $VBoxContainer/ColorRect
 
@@ -21,6 +25,11 @@ func _ready() -> void:
 			)
 	else:
 		reset_button.hide()
+	
+	# Connect to lives changed signal
+	Game.GL_LIVES_CHANGED.connect(_on_lives_changed)
+	_update_lives_display(Game.lives)
+	
 	if get_tree().current_scene.has_signal("GS_GAME_PAUSED"):
 		get_tree().current_scene.GS_GAME_PAUSED.connect(_on_player_score)
 		# RECT Einblenden
@@ -63,3 +72,24 @@ func _on_color_rect_gui_input(event: InputEvent) -> void:
 			get_tree().paused = false
 			get_tree().current_scene.GS_GAME_UNPAUSED.emit()
 	pass # Replace with function body.
+
+
+## Update lives display when lives change
+func _on_lives_changed(lives_remaining: int) -> void:
+	_update_lives_display(lives_remaining)
+
+
+## Update visual representation of lives
+func _update_lives_display(lives: int) -> void:
+	# Update label
+	if label_lives:
+		label_lives.text = "Lives: %d" % lives
+	
+	# Update icons (3 paddle icons for 3 lives)
+	if lives_icon_1:
+		lives_icon_1.visible = lives >= 1
+	if lives_icon_2:
+		lives_icon_2.visible = lives >= 2
+	if lives_icon_3:
+		lives_icon_3.visible = lives >= 3
+

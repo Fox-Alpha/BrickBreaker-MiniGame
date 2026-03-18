@@ -80,6 +80,18 @@ layout_mode = 2
 theme_override_constants/separation = 4
 theme_override_styles/separator = SubResource("StyleBoxFlat_rpywg")
 
+[node name="LabelLives" type="Label" parent="VBoxContainer/PanelContainer/Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 28
+text = "Lives: 3"
+
+[node name="VSeparator7" type="VSeparator" parent="VBoxContainer/PanelContainer/Panel/HBoxContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+theme_override_constants/separation = 4
+theme_override_styles/separator = SubResource("StyleBoxFlat_rpywg")
+
 [node name="ButtonResetGame" type="Button" parent="VBoxContainer/PanelContainer/Panel/HBoxContainer" unique_id=1775304766]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
