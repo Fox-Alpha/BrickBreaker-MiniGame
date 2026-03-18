@@ -21,9 +21,8 @@ var _brickcount : int = 0 :
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_set_mapposition_to_viewport()
-	world_boundarys.ResetWorldBorderPositions(UI_MARGIN)
+	world_boundarys.reset_world_border_positions(UI_MARGIN)
 	print("Brick_Map::_ready() -> Brick Count: %s" % _brickcount)
-	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
