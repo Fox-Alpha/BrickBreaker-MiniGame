@@ -43,8 +43,3 @@ theme_override_constants/margin_bottom = 50
 [node name="MainView" parent="CenterContainer/HBoxContainer/MenuContainer/MarginContainer" unique_id=324949806 instance=ExtResource("3_r15pg")]
 layout_mode = 2
 alignment = 1
-
-[node name="MainMenu" type="Control" parent="." unique_id=69546658]
-visible = false
-layout_mode = 3
-anchors_preset = 0
