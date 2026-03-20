@@ -25,7 +25,7 @@ func _physics_process(delta: float) -> void:
 		_mouse_move()
 	else:
 		_move_with_keyboard(delta)
-	
+
 	# Bewegung ausführen
 	move_and_slide()
 
@@ -33,24 +33,24 @@ func _physics_process(delta: float) -> void:
 func _mouse_move() -> void:
 	var mouse_pos = get_viewport().get_mouse_position()
 	var target_x = mouse_pos.x
-	
+
 	# Sanfte Bewegung
 	position.x = lerp(position.x, target_x, mouse_sensitivity * 0.3)
-	
+
 	# Velocity für Physics setzen (wichtig für Kollisionen)
 	velocity.x = (target_x - position.x) * 10
 
 
 func _move_with_keyboard(delta: float) -> void:
 	var direction := 0.0
-	
+
 	direction = Input.get_axis("p1_left", "p1_right")
-	
+
 	if direction != 0:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED * delta * 5)
-	
+
 	velocity = direction * SPEED * delta
 
 
