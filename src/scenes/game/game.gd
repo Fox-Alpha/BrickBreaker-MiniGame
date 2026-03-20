@@ -16,6 +16,7 @@ extends Node2D
 # -> UI: Show Win Dialog / Next Level
 
 const BALL_BODY = preload("uid://bx7lmlxv60bk7")
+const PADDLE = preload("uid://xxrnnvqgevnr")
 
 signal NoMoreBrickInMap
 signal Ball_Respawned
@@ -30,14 +31,14 @@ signal GS_GAME_UNPAUSED
 @warning_ignore_restore("unused_signal")
 #endregion
 
-@export var paddle : PackedScene
+#@export var paddle : PaddleController
 @export var brickmap : TileMapLayer
 @export var cam : Camera2D
 @export var canvas_layer: CanvasLayer
 
 @onready var vps := get_viewport_rect()
 @onready var center_marker: Marker2D = $CenterMarker
-@onready var respawn_timer: Timer = $RespawnTimer
+@onready var respawn_timer: Timer #= $RespawnTimer
 
 var ball : Node
 var paddle_instance : Node
@@ -48,6 +49,7 @@ var worldsize : Vector2i = Vector2i(800,800)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	# Game
 	NoMoreBrickInMap.connect(_on_no_more_bricks)
 	cam.position = get_viewport_rect().get_center()
 	center_marker.position = get_viewport_rect().get_center()
@@ -113,12 +115,12 @@ func startgame() -> void:
 	# Initialize game state
 	Game.init_game()
 
-	var pad := paddle.instantiate()
+	var pad : PaddleController = PADDLE.instantiate()
 	spawn_ball()
 	canvas_layer.ball = ball
 	add_child(pad)
 	paddle_instance = pad
-	var p:= Vector2(vps.get_center().x, vps.end.y -pad.getPaddleSize().y *2)
+	var p:= Vector2(vps.get_center().x, vps.end.y -pad.get_paddle_size().y *2)
 	pad.position = p
 
 
