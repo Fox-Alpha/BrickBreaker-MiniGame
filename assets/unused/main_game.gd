@@ -45,6 +45,7 @@ var worldsize : Vector2i = Vector2i(800,800)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	# Game Main
 	NoMoreBrickInMap.connect(func(): print("Keine Bricks mehr da"))
 	cam.position = get_viewport_rect().get_center()
 	center_marker.position = get_viewport_rect().get_center()
