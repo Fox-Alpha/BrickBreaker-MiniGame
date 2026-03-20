@@ -11,6 +11,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	# main_view
 	Game.GL_CHANGE_GAMESTATE.emit(Game.GameStates.GAMEMAINMENU)
 
 

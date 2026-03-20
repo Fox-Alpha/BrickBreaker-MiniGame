@@ -26,6 +26,7 @@ var _gamescore : int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	# game_ui
 	#color_rect.gui_input.connect(_on_color_rect_gui_input)
 	if get_tree().current_scene.has_signal("Player_Score"):
 		get_tree().current_scene.Player_Score.connect(_on_player_score)
